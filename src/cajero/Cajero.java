@@ -5,10 +5,8 @@
  */
 package cajero;
 
-/**
- *
- * @author demia
- */
+/*@author GRUPO MEDIA LIBRA DE AGUA :V */
+
 public class Cajero {
 
     /**
@@ -18,7 +16,7 @@ public class Cajero {
         // TODO code application logic here
         System.out.println("hola mundo");
         System.out.println("Prueba");
-        
+        System.out.println("prueba juan");
     }
     
 }
