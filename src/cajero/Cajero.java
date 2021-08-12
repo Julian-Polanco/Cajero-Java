@@ -10,5 +10,4 @@ public class Cajero {
         System.out.println("Hola Grupo Media Libra de Agua :v");
         System.out.println("probando conexion");
     }
-    
 }
