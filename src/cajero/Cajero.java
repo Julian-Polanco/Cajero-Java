@@ -17,6 +17,7 @@ public class Cajero {
         System.out.println("hola mundo");
         System.out.println("Prueba");
         System.out.println("prueba juan");
+        System.out.println("Ahora todos a mimir");
         System.out.println("Hola Grupo Media Libra de Agua :v");
     }
     
