@@ -14,12 +14,7 @@ public class Cajero {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("hola mundo");
-        System.out.println("Prueba");
-        System.out.println("prueba juan");
-        System.out.println("Ahora todos a mimir");
         System.out.println("Hola Grupo Media Libra de Agua :v");
-        System.out.println("prueba Estiven");
     }
     
 }
