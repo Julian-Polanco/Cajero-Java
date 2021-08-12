@@ -19,6 +19,8 @@ public class Cajero {
         System.out.println("hola mundo");
         System.out.println("ultima prueba");
         System.out.println("Prueba conexion");
+        System.out.println("Prueba");
+        
     }
     
 }
