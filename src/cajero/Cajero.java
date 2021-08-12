@@ -18,6 +18,7 @@ public class Cajero {
         // TODO code application logic here
         System.out.println("hola mundo");
         System.out.println("Prueba");
+        System.out.println("nicol");
         
     }
     
