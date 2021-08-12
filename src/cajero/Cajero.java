@@ -8,6 +8,7 @@ public class Cajero {
         // TODO code application logic here
         System.out.println("hola mundo");
         System.out.println("Hola Grupo Media Libra de Agua :v");
+        System.out.println("probando conexion");
     }
     
 }
