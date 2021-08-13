@@ -20,6 +20,7 @@ public class registro extends javax.swing.JFrame {
      */
     public registro() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -51,7 +52,6 @@ public class registro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         jLabel2.setText("Tipo de documento:");
 
@@ -118,7 +118,7 @@ public class registro extends javax.swing.JFrame {
                             .addComponent(fecha_nacimiento)
                             .addComponent(contrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                             .addComponent(btn_registrar))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
