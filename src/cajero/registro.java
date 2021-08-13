@@ -225,6 +225,9 @@ public class registro extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -253,5 +256,5 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> tipo_doc;
     // End of variables declaration//GEN-END:variables
 conexion cc= new conexion();
-        Connection cn = cc.conexion();
+       Connection cn = cc.conexion();
 }

@@ -73,7 +73,6 @@ public class interfazInicio extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("Escriba la clave de su cuenta");
 
-        txtContra.setEditable(false);
         txtContra.setBackground(new java.awt.Color(254, 244, 232));
         txtContra.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtContra.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
@@ -89,12 +88,22 @@ public class interfazInicio extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 0, 0));
         jLabel6.setText("¡Registrese aqui!");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                irARegistrar(evt);
+            }
+        });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButton1.setText("Iniciar Sesion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +159,18 @@ public class interfazInicio extends javax.swing.JFrame {
     private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraActionPerformed
+
+    private void irARegistrar(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_irARegistrar
+        // TODO add your handling code here:
+        registro reg = new registro();
+        reg.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_irARegistrar
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
