@@ -55,6 +55,12 @@ public class registro extends javax.swing.JFrame {
 
         jLabel2.setText("Tipo de documento:");
 
+        telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonoActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Número de documento:");
 
         jLabel4.setText("Nombre:");
@@ -198,6 +204,10 @@ public class registro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);
         }
     }//GEN-LAST:event_btn_registrarActionPerformed
+
+    private void telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoActionPerformed
 
     /**
      * @param args the command line arguments
