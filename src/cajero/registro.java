@@ -152,7 +152,7 @@ public class registro extends javax.swing.JFrame {
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         // TODO add your handling code here:
         try{
-        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac,  saldo) VALUES (?,?,?,?,?,?,?,1)");    
+        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac, numCuenta,  saldo) VALUES (?,?,?,?,?,?,?,?,1)");    
             pst.setString(1, (String) tipo_doc.getSelectedItem());
             pst.setString(2,  num_doc.getText());
             pst.setString(3, nombre.getText());
@@ -160,6 +160,7 @@ public class registro extends javax.swing.JFrame {
             pst.setString(5, contrasena.getText());
             pst.setString(6, telefono.getText());
             pst.setString(7, fecha_nacimiento.getText());
+            pst.setString(8, num_doc.getText()+(int)(Math. random()*10+1));
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
             tipo_doc.setSelectedItem("");
