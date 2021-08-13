@@ -21,6 +21,7 @@ public class registro extends javax.swing.JFrame {
      */
     public registro() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -160,7 +161,7 @@ public class registro extends javax.swing.JFrame {
             pst.setString(6, telefono.getText());
             pst.setString(7, fecha_nacimiento.getText());
             pst.setString(8, num_doc.getText()+(int)(Math. random()*10+1));
-            pst.setString(9, "1");
+            pst.setString(9, "0");
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
             tipo_doc.setSelectedItem("");
@@ -170,7 +171,9 @@ public class registro extends javax.swing.JFrame {
             contrasena.setText("");
             telefono.setText(""); 
             fecha_nacimiento.setText("");
-         
+            interfazInicio inicio = new interfazInicio();
+            inicio.setVisible(true);
+            this.setVisible(false);
         
             }catch(Exception e){
             System.out.print(e.getMessage());
