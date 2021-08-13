@@ -155,8 +155,8 @@ public class registro extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel5)
@@ -176,8 +176,8 @@ public class registro extends javax.swing.JFrame {
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         // TODO add your handling code here:
-          try{
-        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac, numCuenta,  saldo) VALUES (?,?,?,?,?,?,?,?,0)");    
+         try{
+        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac) VALUES (?,?,?,?,?,?,?)");    
             pst.setString(1, (String) tipo_doc.getSelectedItem());
             pst.setString(2,  num_doc.getText());
             pst.setString(3, nombre.getText());
@@ -185,9 +185,24 @@ public class registro extends javax.swing.JFrame {
             pst.setString(5, contrasena.getText());
             pst.setString(6, telefono.getText());
             pst.setString(7, fecha_nacimiento.getText());
-            pst.setString(8, num_doc.getText()+(int)(Math. random()*10+1));
             pst.executeUpdate();
+           
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
+            interfazInicio registro=new interfazInicio();
+            registro.setVisible(true);
+        this.setVisible(false);
+            }catch(Exception e){
+            System.out.print(e.getMessage());
+            JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);
+        }
+        try{
+     
+        PreparedStatement pst = cn.prepareStatement ("INSERT INTO cuenta (numCuenta,  saldo, numDoc )VALUES (?,0,?)");
+         
+            pst.setString(1, num_doc.getText()+(int)(Math. random()*10+1));
+            pst.setString(2, num_doc.getText());  
+            pst.executeUpdate();
+            
             tipo_doc.setSelectedItem("");
             num_doc.setText("");
             nombre.setText("");
@@ -195,9 +210,7 @@ public class registro extends javax.swing.JFrame {
             contrasena.setText("");
             telefono.setText(""); 
             fecha_nacimiento.setText("");
-         
-        
-            }catch(Exception e){
+        }catch(Exception e){
             System.out.print(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);
         }
