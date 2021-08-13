@@ -41,7 +41,7 @@ public class interfazcajero extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel1.setText("Bienvenido al Banco Media Libra de Agua");
+        jLabel1.setText("Bienvenido al Banco Media libra de Agua");
         jLabel1.setToolTipText("");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 

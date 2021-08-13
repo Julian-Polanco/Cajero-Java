@@ -91,7 +91,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Times New Roman" size="20" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Bienvenido al Banco Media Libra de Agua"/>
+        <Property name="text" type="java.lang.String" value="Bienvenido al Banco Media libra de Agua"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
