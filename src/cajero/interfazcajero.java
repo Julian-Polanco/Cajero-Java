@@ -16,6 +16,7 @@ public class interfazcajero extends javax.swing.JFrame {
      */
     public interfazcajero() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
