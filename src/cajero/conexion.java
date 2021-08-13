@@ -10,7 +10,7 @@ public class conexion {
     public Connection conexion() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conectar = DriverManager.getConnection("jdbc:mysql://localhost/baseDeDatos", "root", "");
+            conectar = DriverManager.getConnection("jdbc:mysql://localhost/cajero", "root", "");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
