@@ -32,7 +32,6 @@ public class registro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tipo_doc = new javax.swing.JComboBox<>();
@@ -105,7 +104,7 @@ public class registro extends javax.swing.JFrame {
                             .addComponent(telefono)
                             .addComponent(jLabel6)
                             .addComponent(btn_registrar)
-                            .addComponent(fecha_nacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))))
+                            .addComponent(fecha_nacimiento))))
                 .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -152,7 +151,7 @@ public class registro extends javax.swing.JFrame {
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         // TODO add your handling code here:
         try{
-        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac, numCuenta,  saldo) VALUES (?,?,?,?,?,?,?,?,1)");    
+        PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac, numCuenta,  saldo) VALUES (?,?,?,?,?,?,?,?,?)");    
             pst.setString(1, (String) tipo_doc.getSelectedItem());
             pst.setString(2,  num_doc.getText());
             pst.setString(3, nombre.getText());
@@ -161,6 +160,7 @@ public class registro extends javax.swing.JFrame {
             pst.setString(6, telefono.getText());
             pst.setString(7, fecha_nacimiento.getText());
             pst.setString(8, num_doc.getText()+(int)(Math. random()*10+1));
+            pst.setString(9, "1");
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
             tipo_doc.setSelectedItem("");
@@ -221,7 +221,6 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField contrasena;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fecha_nacimiento;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -235,6 +234,6 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JComboBox<String> tipo_doc;
     // End of variables declaration//GEN-END:variables
-conexion cc= new conexion();
+conexion cc = new conexion();
         Connection cn = cc.conexion();
 }
