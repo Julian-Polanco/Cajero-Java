@@ -8,7 +8,10 @@ package cajero;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -198,16 +201,11 @@ String num4;
                         .addGap(84, 84, 84)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(siete)
+                                .addComponent(uno)
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cero)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ocho)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(nueve)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(dos)
+                                .addGap(18, 18, 18)
+                                .addComponent(tres))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(cuatro)
                                 .addGap(18, 18, 18)
@@ -215,14 +213,21 @@ String num4;
                                 .addGap(18, 18, 18)
                                 .addComponent(seis))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(uno)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cero)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(siete)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ocho)))
                                 .addGap(18, 18, 18)
-                                .addComponent(dos)
-                                .addGap(18, 18, 18)
-                                .addComponent(tres)
+                                .addComponent(nueve)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(98, 98, 98)
-                                .addComponent(btn_consultar_saldo)))
-                        .addGap(38, 38, 38))
+                                .addComponent(btn_consultar_saldo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1))
@@ -249,22 +254,21 @@ String num4;
                     .addComponent(dos, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_consultar_saldo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cuatro, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cinco, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(seis, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(ocho, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nueve, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(siete, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cero, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(siete, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ocho, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nueve, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cero, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
 
         pack();
@@ -348,29 +352,28 @@ String num4;
     }//GEN-LAST:event_ceroActionPerformed
 
     private void btn_consultar_saldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_saldoActionPerformed
-        // TODO add your handling code here:
-        int saldo=0;
-    saldo= Integer.parseInt(num_cuenta.getText());
-    ResultSet rs=null;
-    System.out.println(saldo);
-    String query= "select * from cuenta where saldo = '"+saldo+"'"; 
-    try {
-        Statement st= cn.createStatement();
-        System.out.println(saldo);
-        rs = st.executeQuery(query);
-        rs.first();
-        if(rs!=null){
-               // enco=1;
-                System.out.println(saldo);
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null,e);
-        System.out.println(e);
-        //return enco;
+ DefaultTableModel modelo= new DefaultTableModel();// se creó una instancia de una tabla
+    modelo.addColumn("NÚMERO DE CUENTA");
+    modelo.addColumn("NÚMERO DE DOCUMENTO");
+    modelo.addColumn("SALDO");
+    tb_saldo.setModel(modelo);
+    String[]datos = new String[3];
+    try{
+        int dato=0;
+       dato= Integer.parseInt(num_cuenta.getText());
+    Statement st= cn.createStatement();
+    ResultSet rs= st.executeQuery("SELECT * FROM cuenta WHERE numCuenta='"+dato+"' ");
+       while (rs.next()){
+    datos[0]=rs.getString(1);
+    datos[1]=rs.getString(4);
+    datos[2]=rs.getString(3);
+    modelo.addRow(datos);
+}
+    }catch(Exception e){
+    System.out.print(e.getMessage());
+    JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);     
     }
-    //System.out.println(enco);
-    //return enco;
-   
+       
    
        
     
