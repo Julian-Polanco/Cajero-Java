@@ -11,6 +11,7 @@ public class conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conectar = DriverManager.getConnection("jdbc:mysql://localhost/cajero", "root", "");
+            System.out.println("conexion");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
