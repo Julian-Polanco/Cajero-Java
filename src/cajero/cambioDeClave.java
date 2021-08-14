@@ -168,25 +168,12 @@ public class cambioDeClave extends javax.swing.JFrame {
         Integer newPasswordData = Integer.parseInt(newPassword.getText());
         Integer repeatPasswordData = Integer.parseInt(newPasswordAgain.getText());
         try{
-            if(newPasswordData == repeatPasswordData){
-                try{
-                    PreparedStatement pst = cn.prepareStatement("UPDATE usuarios SET contraseña='"+repeatPasswordData+"' WHERE numDoc='"+numDoc+"'");
-                pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Contraseña actualizada.");
-                }
-                catch(Exception e){
-                    System.out.print(e.getMessage());
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar" +e);
-                }
-            }else{
-                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden, revise por favor");
-            }
+            PreparedStatement pst = cn.prepareStatement("UPDATE usuarios SET contraseña='"+newPasswordData+"' WHERE numDoc='"+numDoc+"'");
+            pst.executeUpdate();
+            System.out.println("Datos de el usuario "+numDoc+" actualizados correctamente.");
         }catch(Exception e){
-            System.out.print(e.getMessage());
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar" +e);
+            System.out.println(e.getMessage());
         }
-
-        
     }//GEN-LAST:event_updateDataActionPerformed
 
     /**
