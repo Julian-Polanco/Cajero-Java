@@ -196,7 +196,9 @@ public class registro extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
             
-         
+         interfazInicio iniciar=new interfazInicio();
+        iniciar.setVisible(true);
+        this.setVisible(false);
         
             }catch(Exception e){
             System.out.print(e.getMessage());
