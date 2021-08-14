@@ -205,11 +205,10 @@ public class registro extends javax.swing.JFrame {
         try{
             
         
-        //System.out.println(n);
-     //  PreparedStatement pst = cn.prepareStatement("INSERT INTO cuenta (numCuenta, fechaApertura, saldo, numDoc ) VALUES (01,?,0,(select MAX(numDoc) from usuarios))");    
+       
         PreparedStatement pst = cn.prepareStatement ("INSERT INTO cuenta (numCuenta,  saldo, numDoc )VALUES (?,0,?)");
           
-         // pst.setString(1,("select MAX(numDoc) from usuarios") );
+         
           pst.setString(1, num_doc.getText()+(int)(Math. random()*10+1));
            pst.setString(2, num_doc.getText());  
             pst.executeUpdate();
