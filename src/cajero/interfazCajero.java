@@ -32,7 +32,7 @@ public class interfazCajero extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnsaldo = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btncambiarclave = new javax.swing.JButton();
 
@@ -51,8 +51,13 @@ public class interfazCajero extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jButton1.setText("Transacción");
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jButton2.setText("Consultar Saldo");
+        btnsaldo.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        btnsaldo.setText("Consultar Saldo");
+        btnsaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaldoActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jButton3.setText("Nequi");
@@ -76,7 +81,7 @@ public class interfazCajero extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnsaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btncambiarclave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(96, 96, 96))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -103,7 +108,7 @@ public class interfazCajero extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnsaldo))
                 .addGap(83, 83, 83)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -120,6 +125,13 @@ public class interfazCajero extends javax.swing.JFrame {
         cambioclave.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btncambiarclaveActionPerformed
+
+    private void btnsaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaldoActionPerformed
+        // TODO add your handling code here:
+        consultarSaldo consusaldo= new consultarSaldo();
+        consusaldo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnsaldoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,8 +170,8 @@ public class interfazCajero extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncambiarclave;
+    private javax.swing.JButton btnsaldo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
