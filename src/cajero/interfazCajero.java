@@ -9,12 +9,12 @@ package cajero;
  *
  * @author estiv
  */
-public class interfazcajero extends javax.swing.JFrame {
+public class interfazCajero extends javax.swing.JFrame {
 
     /**
      * Creates new form interfazcajero
      */
-    public interfazcajero() {
+    public interfazCajero() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -151,7 +151,7 @@ public class interfazcajero extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfazcajero().setVisible(true);
+                new interfazCajero().setVisible(true);
             }
         });
     }
