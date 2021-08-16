@@ -196,7 +196,7 @@ public class registro extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
             
-         interfazInicio iniciar=new interfazInicio();
+        interfazInicio iniciar=new interfazInicio();
         iniciar.setVisible(true);
         this.setVisible(false);
         
@@ -288,6 +288,6 @@ public class registro extends javax.swing.JFrame {
     private javax.swing.JTextField telefono;
     private javax.swing.JComboBox<String> tipo_doc;
     // End of variables declaration//GEN-END:variables
-conexion cc= new conexion();
+       conexion cc= new conexion();
        Connection cn = cc.conexion();
 }
