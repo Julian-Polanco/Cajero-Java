@@ -1,6 +1,11 @@
 package cajero;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 /* @author Grupo Media libra de agua */
@@ -13,7 +18,6 @@ public class InterfazDocumento extends javax.swing.JFrame {
         this.getContentPane().setBackground(new Color(254,244,232));
         TextPrompt id = new TextPrompt("Escriba su numero de identificacion sin puntos ni comas", txtId);
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +46,7 @@ public class InterfazDocumento extends javax.swing.JFrame {
         botonContinuar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        irARegistro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,12 +152,12 @@ public class InterfazDocumento extends javax.swing.JFrame {
         botonCancelar.setBackground(new java.awt.Color(255, 0, 0));
         botonCancelar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonCancelar.setText("Cancelar");
-        botonCancelar.setPreferredSize(new java.awt.Dimension(189, 51));
+        botonCancelar.setPreferredSize(new java.awt.Dimension(207, 51));
 
         botonCorregir.setBackground(new java.awt.Color(255, 255, 51));
         botonCorregir.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonCorregir.setText("Corregir");
-        botonCorregir.setPreferredSize(new java.awt.Dimension(189, 51));
+        botonCorregir.setPreferredSize(new java.awt.Dimension(207, 51));
         botonCorregir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCorregirActionPerformed(evt);
@@ -162,6 +167,12 @@ public class InterfazDocumento extends javax.swing.JFrame {
         botonContinuar.setBackground(new java.awt.Color(51, 255, 51));
         botonContinuar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonContinuar.setText("Continuar");
+        botonContinuar.setPreferredSize(new java.awt.Dimension(207, 51));
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setText("Al finalizar presione continuar");
@@ -169,6 +180,16 @@ public class InterfazDocumento extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 255, 51));
         jLabel4.setText("■");
+
+        irARegistro.setBackground(new java.awt.Color(0, 0, 0));
+        irARegistro.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        irARegistro.setForeground(new java.awt.Color(255, 255, 255));
+        irARegistro.setText("Registrarse");
+        irARegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                irARegistroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,13 +226,15 @@ public class InterfazDocumento extends javax.swing.JFrame {
                         .addComponent(botonSiete)
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCero)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(botonOcho)
                                 .addGap(6, 6, 6)
-                                .addComponent(botonNueve)
-                                .addGap(10, 10, 10)
-                                .addComponent(botonContinuar)))))
+                                .addComponent(botonNueve))
+                            .addComponent(botonCero))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(irARegistro)
+                            .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -246,9 +269,11 @@ public class InterfazDocumento extends javax.swing.JFrame {
                     .addComponent(botonSiete)
                     .addComponent(botonOcho)
                     .addComponent(botonNueve)
-                    .addComponent(botonContinuar))
+                    .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonCero)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCero)
+                    .addComponent(irARegistro))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -324,6 +349,33 @@ public class InterfazDocumento extends javax.swing.JFrame {
         txtId.setText("");
     }//GEN-LAST:event_botonCorregirActionPerformed
 
+    private void irARegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irARegistroActionPerformed
+        // TODO add your handling code here:
+        registro r = new registro();
+        r.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_irARegistroActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        // TODO add your handling code here:
+        String documento = txtId.getText();
+        String [] datos = new String [6];
+        try{
+        String SQL = "SELECT * FROM usuarios WHERE numDoc = ?";
+        PreparedStatement pstmt = cn.prepareStatement(SQL);
+        pstmt.setString(1, documento);
+        ResultSet rs = pstmt.executeQuery();
+        String id = txtId.getText();
+        interfazInicio.dato = id;
+        interfazInicio f = new interfazInicio();
+        this.setVisible(false);
+        f.setVisible(true);
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, "Documento no registrado");
+        txtId.setText("");
+        }
+    }//GEN-LAST:event_botonContinuarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +425,7 @@ public class InterfazDocumento extends javax.swing.JFrame {
     private javax.swing.JButton botonSiete;
     private javax.swing.JButton botonTres;
     private javax.swing.JButton botonUno;
+    private javax.swing.JButton irARegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -380,4 +433,6 @@ public class InterfazDocumento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
+conexion cc= new conexion();
+       Connection cn = cc.conexion();
 }
