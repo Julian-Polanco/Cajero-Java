@@ -20,7 +20,7 @@ public class transacciones extends javax.swing.JFrame {
         idDocumento.setText("");
         valorATratar.setText("");
         idCuenta.setText("");
-        proceso.setSelectedItem("");
+        
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -77,7 +77,7 @@ public class transacciones extends javax.swing.JFrame {
         idDocumento.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
 
         proceso.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        proceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione...", "Retiro", "Consignación" }));
+        proceso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Retiro", "Consignación" }));
         proceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 procesoActionPerformed(evt);
