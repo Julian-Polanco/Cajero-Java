@@ -359,20 +359,19 @@ public class InterfazDocumento extends javax.swing.JFrame {
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         // TODO add your handling code here:
         String documento = txtId.getText();
-        String [] datos = new String [6];
         try{
-        String SQL = "SELECT * FROM usuarios WHERE numDoc = ?";
-        PreparedStatement pstmt = cn.prepareStatement(SQL);
-        pstmt.setString(1, documento);
-        ResultSet rs = pstmt.executeQuery();
-        String id = txtId.getText();
-        interfazInicio.dato = id;
-        interfazInicio f = new interfazInicio();
-        this.setVisible(false);
-        f.setVisible(true);
+            String SQL = "SELECT * FROM usuarios WHERE numDoc = ?";
+            PreparedStatement pstmt = cn.prepareStatement(SQL);
+            pstmt.setString(1, documento);
+            ResultSet rs = pstmt.executeQuery();
+            String id = txtId.getText();
+            interfazInicio.dato = id;
+            interfazInicio f = new interfazInicio();
+            this.setVisible(false);
+            f.setVisible(true);
         }catch(Exception e){
-        JOptionPane.showMessageDialog(null, "Documento no registrado");
-        txtId.setText("");
+            JOptionPane.showMessageDialog(null, "Documento no registrado");
+            txtId.setText("");
         }
     }//GEN-LAST:event_botonContinuarActionPerformed
 
