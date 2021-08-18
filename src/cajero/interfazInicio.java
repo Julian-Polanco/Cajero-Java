@@ -119,6 +119,11 @@ public class interfazInicio extends javax.swing.JFrame {
         botonContinuar.setBackground(new java.awt.Color(51, 255, 51));
         botonContinuar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonContinuar.setText("Continuar");
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
+            }
+        });
 
         botonTres.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonTres.setText("3");
@@ -318,6 +323,10 @@ public class interfazInicio extends javax.swing.JFrame {
         String texto = txtContra.getText();
         txtContra.setText(texto+"8");
     }//GEN-LAST:event_botonOchoActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**
      * @param args the command line arguments
