@@ -140,7 +140,11 @@ public class registro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
+<<<<<<< Updated upstream
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+=======
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+>>>>>>> Stashed changes
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel2))
@@ -170,7 +174,11 @@ public class registro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_registrar)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< Updated upstream
                 .addContainerGap(49, Short.MAX_VALUE))
+=======
+                .addContainerGap(47, Short.MAX_VALUE))
+>>>>>>> Stashed changes
         );
 
         pack();
@@ -182,8 +190,12 @@ public class registro extends javax.swing.JFrame {
 
     private void btn_registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarActionPerformed
         // TODO add your handling code here:
+<<<<<<< Updated upstream
         
          try{
+=======
+          try{
+>>>>>>> Stashed changes
         PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios (tipoDoc, numDoc, nombre, correo ,contraseña, telefono, fechaNac) VALUES (?,?,?,?,?,?,?)");    
             pst.setString(1, (String) tipo_doc.getSelectedItem());
             pst.setString(2,  num_doc.getText());
@@ -196,9 +208,13 @@ public class registro extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null, "REGISTRO ALMACENADO!!!");
             
+<<<<<<< Updated upstream
          interfazInicio iniciar=new interfazInicio();
         iniciar.setVisible(true);
         this.setVisible(false);
+=======
+         
+>>>>>>> Stashed changes
         
             }catch(Exception e){
             System.out.print(e.getMessage());
@@ -206,8 +222,12 @@ public class registro extends javax.swing.JFrame {
         }
         try{
             
+<<<<<<< Updated upstream
         
        
+=======
+      ;    
+>>>>>>> Stashed changes
         PreparedStatement pst = cn.prepareStatement ("INSERT INTO cuenta (numCuenta,  saldo, numDoc )VALUES (?,0,?)");
           
          
@@ -221,6 +241,12 @@ public class registro extends javax.swing.JFrame {
             contrasena.setText("");
             telefono.setText(""); 
             fecha_nacimiento.setText("");
+<<<<<<< Updated upstream
+=======
+            interfazInicio registro=new interfazInicio();
+        registro.setVisible(true);
+        this.setVisible(false);
+>>>>>>> Stashed changes
         }catch(Exception e){
             System.out.print(e.getMessage());
             JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);
