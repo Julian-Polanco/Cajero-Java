@@ -24,7 +24,7 @@ public class interfazInicio extends javax.swing.JFrame {
         TextPrompt contrasena = new TextPrompt("Recuerde cambiar su clave periodicamente", txtContra);
         setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(254,244,232));
-        jLabel3.setText(dato);
+        usuario.setText("El documento digitado es: "+dato);
     }
 
     /**
@@ -36,7 +36,7 @@ public class interfazInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         txtContra = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         botonNueve = new javax.swing.JButton();
@@ -53,14 +53,14 @@ public class interfazInicio extends javax.swing.JFrame {
         botonSiete = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         botonOcho = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(600, 700));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Digite su clave para continuar y presione continuar");
+        usuario.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        usuario.setText("Digite su clave para continuar y presione continuar");
 
         txtContra.setBackground(new java.awt.Color(254, 244, 232));
         txtContra.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -177,66 +177,65 @@ public class interfazInicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("jLabel3");
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel4.setText("Digite su clave para continuar y presione continuar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1))
-                            .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonCuatro)
-                                .addGap(6, 6, 6)
-                                .addComponent(botonCinco)
-                                .addGap(6, 6, 6)
-                                .addComponent(botonSeis)
-                                .addGap(10, 10, 10)
-                                .addComponent(botonCorregir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonUno)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonDos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(botonTres)
-                                .addGap(10, 10, 10)
-                                .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonSiete)
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonCero)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(botonOcho)
-                                        .addGap(6, 6, 6)
-                                        .addComponent(botonNueve)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(botonContinuar))))))
+                        .addComponent(botonCuatro)
+                        .addGap(6, 6, 6)
+                        .addComponent(botonCinco)
+                        .addGap(6, 6, 6)
+                        .addComponent(botonSeis)
+                        .addGap(10, 10, 10)
+                        .addComponent(botonCorregir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addComponent(jLabel3)))
+                        .addComponent(botonUno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonDos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonTres)
+                        .addGap(10, 10, 10)
+                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonSiete)
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonCero)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonOcho)
+                                .addGap(6, 6, 6)
+                                .addComponent(botonNueve)
+                                .addGap(10, 10, 10)
+                                .addComponent(botonContinuar))))
+                    .addComponent(usuario)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(24, 24, 24)))
                 .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(49, 49, 49)
+                    .addComponent(jLabel4)
+                    .addContainerGap(61, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel7)
-                .addGap(9, 9, 9)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
+                .addComponent(usuario)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -258,7 +257,12 @@ public class interfazInicio extends javax.swing.JFrame {
                     .addComponent(botonContinuar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCero)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(244, 244, 244)
+                    .addComponent(jLabel4)
+                    .addContainerGap(310, Short.MAX_VALUE)))
         );
 
         pack();
@@ -383,9 +387,9 @@ public class interfazInicio extends javax.swing.JFrame {
     private javax.swing.JButton botonTres;
     private javax.swing.JButton botonUno;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField txtContra;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

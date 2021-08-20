@@ -364,15 +364,22 @@ public class InterfazDocumento extends javax.swing.JFrame {
             PreparedStatement pstmt = cn.prepareStatement(SQL);
             pstmt.setString(1, documento);
             ResultSet rs = pstmt.executeQuery();
-            String id = txtId.getText();
+            rs.last();
+            if(rs.getRow()>0){
+              String id = txtId.getText();
             interfazInicio.dato = id;
             interfazInicio f = new interfazInicio();
             this.setVisible(false);
-            f.setVisible(true);
+            f.setVisible(true);  
+            }else{
+            JOptionPane.showMessageDialog(null, "Documento no registrado");
+            txtId.setText("");
+            }
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Documento no registrado");
             txtId.setText("");
         }
+        
     }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**
