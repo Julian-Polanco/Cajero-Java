@@ -30,7 +30,7 @@ String num4;
      */
     public consultarSaldo() {
         initComponents();
-        
+    this.setLocationRelativeTo(null);    
    
 
 }
