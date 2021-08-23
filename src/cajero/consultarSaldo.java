@@ -353,8 +353,8 @@ String num4;
 
     private void btn_consultar_saldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_saldoActionPerformed
  DefaultTableModel modelo= new DefaultTableModel();// se creó una instancia de una tabla
-    modelo.addColumn("NÚMERO DE CUENTA");
-    modelo.addColumn("NÚMERO DE DOCUMENTO");
+    modelo.addColumn("CUENTA");
+    modelo.addColumn("DOCUMENTO");
     modelo.addColumn("SALDO");
     tb_saldo.setModel(modelo);
     String[]datos = new String[3];
@@ -364,9 +364,9 @@ String num4;
     Statement st= cn.createStatement();
     ResultSet rs= st.executeQuery("SELECT * FROM cuenta WHERE numCuenta='"+dato+"' ");
        while (rs.next()){
-    datos[0]=rs.getString(1);
-    datos[1]=rs.getString(4);
-    datos[2]=rs.getString(3);
+    datos[0]=rs.getString(2);
+    datos[1]=rs.getString(1);
+    datos[2]=rs.getString(4);
     modelo.addRow(datos);
 }
     }catch(Exception e){

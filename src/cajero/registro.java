@@ -174,7 +174,6 @@ public class registro extends javax.swing.JFrame {
             pst.setString(2,  num_doc.getText());
             pst.setString(3, nombre.getText());
             pst.setString(4, email.getText());
-            
             pst.setString(5, telefono.getText());
             pst.setString(6, fecha_nacimiento.getText());
             pst.executeUpdate();
