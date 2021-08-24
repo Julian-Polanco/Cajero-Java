@@ -18,7 +18,7 @@ public class interfazCajero extends javax.swing.JFrame {
     public interfazCajero() {
         initComponents();
         setLocationRelativeTo(null);
-        bienvenida.setText("Bienvenido "+nombre1);
+        bienvenida.setText("Bienvenid@ "+nombre1);
 
     }
 
