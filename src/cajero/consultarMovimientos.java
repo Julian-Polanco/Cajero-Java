@@ -6,16 +6,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
-/**
- *
- * @author jdsa1
- */
 public class consultarMovimientos extends javax.swing.JFrame {
-
-    /**
-     * Creates new form consultarMovimientos
-     */
     public consultarMovimientos() {
         initComponents();
         this.setLocationRelativeTo(null);//Centrar formulario
