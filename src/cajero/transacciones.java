@@ -2,7 +2,9 @@ package cajero;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -209,11 +211,14 @@ public class transacciones extends javax.swing.JFrame {
         String operacionARealizar = (String) proceso.getSelectedItem();
         Integer numCuenta = Integer.parseInt(idCuenta.getText());
         Integer dineroEnCuestion = Integer.parseInt(valorATratar.getText());
-        Integer Porcentaje = (dineroEnCuestion * 100) / 10;
+        Integer Porcentaje = dineroEnCuestion / 10;
         String tipo = (String) proceso.getSelectedItem();
         con.conexion();
         String SQL = "SELECT numDoc FROM usuarios WHERE numDoc='"+numDoc+"'";
         String SQL2 = "SELECT numCuenta FROM cuenta WHERE numCuenta='"+numCuenta+"'";
+        String SQL3 = "INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES (?,?,?,?,?)";
+        String SQL4 = "UPDATE cuenta SET saldo = ? WHERE numCuenta = ?";
+        String SQL5 = "SELECT saldo FROM cuenta WHERE numCuenta= ?";
         try {
             con.resultado = con.sentencia.executeQuery(SQL);            
             if(con.resultado.next()){
@@ -222,8 +227,27 @@ public class transacciones extends javax.swing.JFrame {
                 if(con.resultado.next()){
                     JOptionPane.showMessageDialog(null, "Cuenta existente, trámite en proceso....\nEspere por favor...");
                     if(operacionARealizar == "Consignación"){
-                        PreparedStatement pst = cn.prepareStatement("INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES ("+numDoc+", "+tipo+", "+numCuenta+", "+dineroEnCuestion+", "+Porcentaje+")");
-                        pst.executeUpdate();
+                        PreparedStatement cargar = cn.prepareStatement(SQL3);
+                        cargar.setString(1, numDoc);
+                        cargar.setString(2, tipo);
+                        cargar.setInt(3, numCuenta);
+                        cargar.setInt(4, dineroEnCuestion);
+                        cargar.setInt(5, dineroEnCuestion/10);
+                        cargar.executeUpdate();
+                        
+                        
+                        PreparedStatement cbusqueda = cn.prepareStatement(SQL5);
+                        cbusqueda.setInt(1, numCuenta);
+                        ResultSet dato = cbusqueda.executeQuery();
+                        int datoEncontrado = 0;
+                        if(dato.next()){
+                            datoEncontrado = dato.getInt("saldo");
+                        }
+                        //int datoEncontrado2 = Integer.parseInt(datoEncontrado);
+                        PreparedStatement car = cn.prepareStatement(SQL4);
+                        car.setInt(1, datoEncontrado + (dineroEnCuestion-Porcentaje));
+                        cargar.setInt(2, numCuenta);
+                        cargar.executeUpdate();
                         JOptionPane.showMessageDialog(null, "Transacción del usuario "+numDoc+" realizada correctamente.");
                     }else if(operacionARealizar == "Retiro"){
                         PreparedStatement pst2 = cn.prepareStatement("INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES ("+numDoc+","+tipo+", "+numCuenta+", "+-dineroEnCuestion+", "+Porcentaje+")");
