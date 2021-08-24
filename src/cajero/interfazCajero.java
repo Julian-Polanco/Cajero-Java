@@ -10,6 +10,7 @@ package cajero;
  * @author estiv
  */
 public class interfazCajero extends javax.swing.JFrame {
+    public static String nombre1;
 
     /**
      * Creates new form interfazcajero
@@ -17,6 +18,8 @@ public class interfazCajero extends javax.swing.JFrame {
     public interfazCajero() {
         initComponents();
         setLocationRelativeTo(null);
+        bienvenida.setText("Bienvenido "+nombre1);
+
     }
 
     /**
@@ -29,7 +32,7 @@ public class interfazCajero extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel7 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        bienvenida = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnsaldo = new javax.swing.JButton();
@@ -41,10 +44,10 @@ public class interfazCajero extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jLabel1.setText("Bienvenido al Banco Media libra de Agua");
-        jLabel1.setToolTipText("");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bienvenida.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        bienvenida.setText("Bienvenido al Banco Media libra de Agua");
+        bienvenida.setToolTipText("");
+        bienvenida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Seleccione una opción");
@@ -105,7 +108,7 @@ public class interfazCajero extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(bienvenida)
                         .addGap(129, 129, 129))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
@@ -120,7 +123,7 @@ public class interfazCajero extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(bienvenida)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(60, 60, 60)
@@ -201,12 +204,12 @@ public class interfazCajero extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bienvenida;
     private javax.swing.JButton btncambiarclave;
     private javax.swing.JButton btnsaldo;
     private javax.swing.JButton btnsalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables

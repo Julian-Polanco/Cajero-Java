@@ -7,31 +7,51 @@ package cajero;
 
 import java.awt.Color;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Julian Esteban Polan
+ * @author Julian Polanco
  */
-public class interfazInicio extends javax.swing.JFrame {
+public class interfazCuentasUsuario extends javax.swing.JFrame {
 
-    public static String cuenta;
     public static String dato;
-    public static String nombre;
-
+    public static String nombre2;
     /**
-     * Creates new form interfazInicio
+     * Creates new form interfazCuentasUsuario
      */
-    public interfazInicio() {
+    public interfazCuentasUsuario() {
         initComponents();
-        //TextPrompt usuario = new TextPrompt("Escriba su numero de identificacion", txtUsuario);
-        TextPrompt contrasena = new TextPrompt("Recuerde cambiar su clave periodicamente", txtContra);
+        mostrarDatos();
         setLocationRelativeTo(null);
-        this.getContentPane().setBackground(new Color(254,244,232));
-        usuario.setText("La cuenta seleccionada es: "+cuenta);
+        nombre.setText("Bienvenido "+nombre2);
+        this.getContentPane().setBackground(new Color(254, 244, 232));
     }
+    
+     void mostrarDatos(){
+            DefaultTableModel cuentas = new DefaultTableModel();//instancia de tabla
+            cuentas.addColumn("#");
+            cuentas.addColumn("Documento");
+            cuentas.addColumn("Numero de cuenta");
+            tbCuentas.setModel(cuentas);
+            String [] datos = new String [3];
+            try{
+                Statement st = cn.createStatement();
+                ResultSet rs = st.executeQuery("SELECT * FROM cuenta WHERE numDoc="+dato+"");                                  
+                int i=0;
+                while (rs.next()){
+                    i++;
+                    datos[0]=i+"";
+                    datos[1]=rs.getString(1);
+                    datos[2]=rs.getString(2);
+                    cuentas.addRow(datos);
+                }
+            }catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,9 +62,13 @@ public class interfazInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usuario = new javax.swing.JLabel();
-        txtContra = new javax.swing.JPasswordField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbCuentas = new javax.swing.JTable();
+        botonOcho = new javax.swing.JButton();
         botonNueve = new javax.swing.JButton();
         botonCero = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
@@ -57,27 +81,53 @@ public class interfazInicio extends javax.swing.JFrame {
         botonCinco = new javax.swing.JButton();
         botonSeis = new javax.swing.JButton();
         botonSiete = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        botonOcho = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(600, 700));
 
-        usuario.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        usuario.setText("Digite su clave para continuar y presione continuar");
-
-        txtContra.setBackground(new java.awt.Color(254, 244, 232));
-        txtContra.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtContra.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        txtContra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraActionPerformed(evt);
-            }
-        });
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        jLabel1.setText("Seleccione una de sus cuentas para continuar");
+        jLabel1.setToolTipText("");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
+
+        tbCuentas.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tbCuentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        tbCuentas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tbCuentas.setGridColor(new java.awt.Color(254, 244, 232));
+        jScrollPane2.setViewportView(tbCuentas);
+
+        botonOcho.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        botonOcho.setText("8");
+        botonOcho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonOchoActionPerformed(evt);
+            }
+        });
 
         botonNueve.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonNueve.setText("9");
@@ -98,7 +148,7 @@ public class interfazInicio extends javax.swing.JFrame {
         botonCancelar.setBackground(new java.awt.Color(255, 0, 0));
         botonCancelar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonCancelar.setText("Cancelar");
-        botonCancelar.setPreferredSize(new java.awt.Dimension(189, 51));
+        botonCancelar.setPreferredSize(new java.awt.Dimension(207, 51));
 
         botonUno.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonUno.setText("1");
@@ -111,7 +161,7 @@ public class interfazInicio extends javax.swing.JFrame {
         botonCorregir.setBackground(new java.awt.Color(255, 255, 51));
         botonCorregir.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonCorregir.setText("Corregir");
-        botonCorregir.setPreferredSize(new java.awt.Dimension(189, 51));
+        botonCorregir.setPreferredSize(new java.awt.Dimension(207, 51));
         botonCorregir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCorregirActionPerformed(evt);
@@ -129,6 +179,7 @@ public class interfazInicio extends javax.swing.JFrame {
         botonContinuar.setBackground(new java.awt.Color(51, 255, 51));
         botonContinuar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonContinuar.setText("Continuar");
+        botonContinuar.setPreferredSize(new java.awt.Dimension(207, 51));
         botonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonContinuarActionPerformed(evt);
@@ -175,80 +226,67 @@ public class interfazInicio extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel1.setText("■");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        botonOcho.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        botonOcho.setText("8");
-        botonOcho.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonOchoActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel4.setText("Digite su clave para continuar y presione continuar");
+        nombre.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
+        nombre.setToolTipText("");
+        nombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonCuatro)
-                        .addGap(6, 6, 6)
-                        .addComponent(botonCinco)
-                        .addGap(6, 6, 6)
-                        .addComponent(botonSeis)
-                        .addGap(10, 10, 10)
-                        .addComponent(botonCorregir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonUno)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonDos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonTres)
-                        .addGap(10, 10, 10)
-                        .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonSiete)
-                        .addGap(6, 6, 6)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel7)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombre)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCero)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonOcho)
+                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addComponent(botonSiete)
                                 .addGap(6, 6, 6)
-                                .addComponent(botonNueve)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(botonOcho)
+                                        .addGap(6, 6, 6)
+                                        .addComponent(botonNueve))
+                                    .addComponent(botonCero))
                                 .addGap(10, 10, 10)
-                                .addComponent(botonContinuar))))
-                    .addComponent(usuario)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(24, 24, 24)))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(49, 49, 49)
-                    .addComponent(jLabel4)
-                    .addContainerGap(61, Short.MAX_VALUE)))
+                                .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addComponent(botonCuatro)
+                                .addGap(6, 6, 6)
+                                .addComponent(botonCinco)
+                                .addGap(6, 6, 6)
+                                .addComponent(botonSeis)
+                                .addGap(10, 10, 10)
+                                .addComponent(botonCorregir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createSequentialGroup()
+                                .addComponent(botonUno)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonDos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonTres)
+                                .addGap(10, 10, 10)
+                                .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel7)
+                .addGap(15, 15, 15)
+                .addComponent(nombre)
                 .addGap(18, 18, 18)
-                .addComponent(usuario)
-                .addGap(2, 2, 2)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonUno)
                     .addComponent(botonDos)
@@ -265,112 +303,128 @@ public class interfazInicio extends javax.swing.JFrame {
                     .addComponent(botonSiete)
                     .addComponent(botonOcho)
                     .addComponent(botonNueve)
-                    .addComponent(botonContinuar))
+                    .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonCero)
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(244, 244, 244)
-                    .addComponent(jLabel4)
-                    .addContainerGap(310, Short.MAX_VALUE)))
+                .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
+    private void botonOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOchoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraActionPerformed
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(7,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonOchoActionPerformed
 
     private void botonNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNueveActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"9");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(8,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonNueveActionPerformed
 
     private void botonCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCeroActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"0");
     }//GEN-LAST:event_botonCeroActionPerformed
 
     private void botonUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnoActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"1");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(0,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonUnoActionPerformed
 
     private void botonCorregirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCorregirActionPerformed
         // TODO add your handling code here:
-        txtContra.setText("");
+        InterfazDocumento volver = new InterfazDocumento();
+        volver.setVisible(true);
+        this.setVisible(false);
+        
     }//GEN-LAST:event_botonCorregirActionPerformed
 
     private void botonDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDosActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"2");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(1,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonDosActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        // TODO add your handling code here:
+        int fila = tbCuentas.getSelectedRow();        
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(fila,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        interfazInicio.nombre = nombre2;
+        clave.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_botonContinuarActionPerformed
 
     private void botonTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTresActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"3");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(2,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonTresActionPerformed
 
     private void botonCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuatroActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"4");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(3,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonCuatroActionPerformed
 
     private void botonCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCincoActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"5");
+       String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(4,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonCincoActionPerformed
 
     private void botonSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeisActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"6");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(5,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonSeisActionPerformed
 
     private void botonSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSieteActionPerformed
         // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"7");
+        String cuentaSel;
+        cuentaSel = tbCuentas.getValueAt(6,2).toString();
+        interfazInicio.cuenta=cuentaSel;
+        interfazInicio clave = new interfazInicio();
+        clave.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_botonSieteActionPerformed
-
-    private void botonOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOchoActionPerformed
-        // TODO add your handling code here:
-        String texto = txtContra.getText();
-        txtContra.setText(texto+"8");
-    }//GEN-LAST:event_botonOchoActionPerformed
-
-    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
-        // TODO add your handling code here:
-        try {
-            String SQL = "SELECT * FROM cuenta WHERE numCuenta =? AND contra=?";
-            PreparedStatement pstmt = cn.prepareStatement(SQL);
-            System.out.println(cuenta);
-            System.out.println(txtContra.getText());
-
-            pstmt.setString(1, cuenta);
-            pstmt.setString(2, txtContra.getText());
-            ResultSet rs = pstmt.executeQuery();
-            rs.last();
-            if (rs.getRow() > 0) {                
-                interfazCajero f = new interfazCajero();                
-                this.setVisible(false);
-                f.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Clave incorrecta");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Clave asasincorrecta");
-        }
-    }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,20 +443,20 @@ public class interfazInicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(interfazInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(interfazCuentasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(interfazInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(interfazCuentasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(interfazInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(interfazCuentasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(interfazInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(interfazCuentasUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfazInicio().setVisible(true);
+                new interfazCuentasUsuario().setVisible(true);
             }
         });
     }
@@ -422,15 +476,14 @@ public class interfazInicio extends javax.swing.JFrame {
     private javax.swing.JButton botonTres;
     private javax.swing.JButton botonUno;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPasswordField txtContra;
-    private javax.swing.JLabel usuario;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JTable tbCuentas;
     // End of variables declaration//GEN-END:variables
-conexion cc = new conexion();
-    Connection cn = cc.conexion();
-
-    private void AND(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+conexion cc= new conexion();
+       Connection cn = cc.conexion();
+       
 }

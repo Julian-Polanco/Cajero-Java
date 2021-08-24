@@ -9,15 +9,15 @@ import javax.swing.JOptionPane;
 import javax.swing.border.EmptyBorder;
 
 /* @author Grupo Media libra de agua */
-
 public class InterfazDocumento extends javax.swing.JFrame {
 
     public InterfazDocumento() {
         initComponents();
         setLocationRelativeTo(null);
-        this.getContentPane().setBackground(new Color(254,244,232));
+        this.getContentPane().setBackground(new Color(254, 244, 232));
         TextPrompt id = new TextPrompt("Escriba su numero de identificacion sin puntos ni comas", txtId);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -286,62 +286,62 @@ public class InterfazDocumento extends javax.swing.JFrame {
 
     private void botonUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnoActionPerformed
         // TODO add your handling code here:
-       String texto = txtId.getText();
-       txtId.setText(texto+"1");
+        String texto = txtId.getText();
+        txtId.setText(texto + "1");
     }//GEN-LAST:event_botonUnoActionPerformed
 
     private void botonDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDosActionPerformed
         // TODO add your handling code here:
-       String texto = txtId.getText();
-       txtId.setText(texto+"2");
+        String texto = txtId.getText();
+        txtId.setText(texto + "2");
     }//GEN-LAST:event_botonDosActionPerformed
 
     private void botonTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTresActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"3");
+        txtId.setText(texto + "3");
     }//GEN-LAST:event_botonTresActionPerformed
 
     private void botonCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuatroActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"4");
+        txtId.setText(texto + "4");
     }//GEN-LAST:event_botonCuatroActionPerformed
 
     private void botonCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCincoActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"5");
+        txtId.setText(texto + "5");
     }//GEN-LAST:event_botonCincoActionPerformed
 
     private void botonSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeisActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"6");
+        txtId.setText(texto + "6");
     }//GEN-LAST:event_botonSeisActionPerformed
 
     private void botonSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSieteActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"7");
+        txtId.setText(texto + "7");
     }//GEN-LAST:event_botonSieteActionPerformed
 
     private void botonOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOchoActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"8");
+        txtId.setText(texto + "8");
     }//GEN-LAST:event_botonOchoActionPerformed
 
     private void botonNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNueveActionPerformed
         // TODO add your handling code here:
         String texto = txtId.getText();
-       txtId.setText(texto+"9");
+        txtId.setText(texto + "9");
     }//GEN-LAST:event_botonNueveActionPerformed
 
     private void botonCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCeroActionPerformed
         // TODO add your handling code here:
-       String texto = txtId.getText();
-       txtId.setText(texto+"0");
+        String texto = txtId.getText();
+        txtId.setText(texto + "0");
     }//GEN-LAST:event_botonCeroActionPerformed
 
     private void botonCorregirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCorregirActionPerformed
@@ -359,27 +359,34 @@ public class InterfazDocumento extends javax.swing.JFrame {
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         // TODO add your handling code here:
         String documento = txtId.getText();
-        try{
+        try {
             String SQL = "SELECT * FROM usuarios WHERE numDoc = ?";
             PreparedStatement pstmt = cn.prepareStatement(SQL);
             pstmt.setString(1, documento);
             ResultSet rs = pstmt.executeQuery();
-            rs.last();
-            if(rs.getRow()>0){
-              String id = txtId.getText();
-            interfazInicio.dato = id;
-            interfazInicio f = new interfazInicio();
-            this.setVisible(false);
-            f.setVisible(true);  
-            }else{
-            JOptionPane.showMessageDialog(null, "Documento no registrado");
-            txtId.setText("");
+            while(rs.next()){
+                String nombreUSU;
+                nombreUSU = rs.getString(3);
+                interfazCuentasUsuario.nombre2 = nombreUSU;
+                interfazCajero.nombre1 = nombreUSU;
             }
-        }catch(Exception e){
+            rs.last();
+            if (rs.getRow() > 0) {
+                String id = txtId.getText();
+                interfazInicio.dato=id;                
+                interfazCuentasUsuario.dato=id;                
+                interfazCuentasUsuario f = new interfazCuentasUsuario();                
+                this.setVisible(false);
+                f.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Documento no registrado");
+                txtId.setText("");
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Documento no registrado");
             txtId.setText("");
         }
-        
+
     }//GEN-LAST:event_botonContinuarActionPerformed
 
     /**
@@ -439,6 +446,6 @@ public class InterfazDocumento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
-conexion cc= new conexion();
-       Connection cn = cc.conexion();
+conexion cc = new conexion();
+    Connection cn = cc.conexion();
 }
