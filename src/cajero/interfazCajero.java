@@ -36,7 +36,6 @@ public class interfazCajero extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnsaldo = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         btncambiarclave = new javax.swing.JButton();
         btnsalir = new javax.swing.JButton();
         consultarMovimientos = new javax.swing.JButton();
@@ -46,7 +45,7 @@ public class interfazCajero extends javax.swing.JFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
 
         bienvenida.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        bienvenida.setText("Bienvenido al Banco Media libra de Agua");
+        bienvenida.setText("Bienvenid@");
         bienvenida.setToolTipText("");
         bienvenida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
@@ -68,9 +67,6 @@ public class interfazCajero extends javax.swing.JFrame {
                 btnsaldoActionPerformed(evt);
             }
         });
-
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
-        jButton3.setText("Nequi");
 
         btncambiarclave.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         btncambiarclave.setText("Cambiar Clave");
@@ -101,19 +97,15 @@ public class interfazCajero extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(consultarMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnsaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnsaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
                     .addComponent(btncambiarclave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(96, 96, 96))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(247, 247, 247)
-                .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,14 +113,14 @@ public class interfazCajero extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(bienvenida)
-                        .addGap(129, 129, 129))
+                        .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(229, 229, 229))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(216, 216, 216))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(consultarMovimientos)
-                        .addGap(179, 179, 179))))
+                        .addComponent(bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,12 +134,10 @@ public class interfazCajero extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(btnsaldo))
-                .addGap(19, 19, 19)
-                .addComponent(consultarMovimientos)
-                .addGap(18, 18, 18)
+                .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncambiarclave)
-                    .addComponent(jButton3))
+                    .addComponent(consultarMovimientos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(btnsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -228,7 +218,6 @@ public class interfazCajero extends javax.swing.JFrame {
     private javax.swing.JButton btnsalir;
     private javax.swing.JButton consultarMovimientos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
