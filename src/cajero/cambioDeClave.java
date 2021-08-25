@@ -1,7 +1,7 @@
 package cajero;
 import java.sql.*;
-//import java.sql.ResultSet;
-//import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class cambioDeClave extends javax.swing.JFrame {
@@ -153,16 +153,13 @@ public class cambioDeClave extends javax.swing.JFrame {
 
     private void updateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDataActionPerformed
         // TODO add your handling code here:
-        conexion con = new conexion();
         String numDoc = idCuenta.getText();
         Integer oldPasswordData = Integer.parseInt(oldPassword.getText());
         Integer newPasswordData = Integer.parseInt(newPassword.getText());
-        con.conexion();
-        String SQL = "SELECT numCuenta, contra FROM cuenta WHERE numCuenta='"+cuentaUsu+"' AND contra='"+oldPasswordData+"'";
-        
         try {
-            con.resultado = con.sentencia.executeQuery(SQL);            
-            if(con.resultado.next()){
+                Statement st = cn.createStatement();
+                ResultSet rs = st.executeQuery("SELECT numCuenta, contra FROM cuenta WHERE numCuenta='"+cuentaUsu+"' AND contra='"+oldPasswordData+"'");                        
+            if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Usuario existente, trámite en proceso....\nEspere por favor...");
                 PreparedStatement pst = cn.prepareStatement("UPDATE cuenta SET contra='"+newPasswordData+"' WHERE numCuenta='"+cuentaUsu+"'");
                 pst.executeUpdate();
