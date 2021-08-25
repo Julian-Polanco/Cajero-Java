@@ -1,17 +1,20 @@
 package cajero;
 import java.sql.*;
-//import java.sql.ResultSet;
-//import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class cambioDeClave extends javax.swing.JFrame {
-
+ 
+        public static String cuentaUsu;
     public cambioDeClave() {
         initComponents();
         setLocationRelativeTo(null);
+        idCuenta.setText(""+cuentaUsu);
+        System.out.println(cuentaUsu);
     }
     void limpiar(){
-    idValue.setText("");
+    idCuenta.setText("");
     oldPassword.setText("");
     newPassword.setText("");
     }
@@ -22,7 +25,7 @@ public class cambioDeClave extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         updateData = new javax.swing.JButton();
-        idValue = new javax.swing.JTextField();
+        idCuenta = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,8 +49,10 @@ public class cambioDeClave extends javax.swing.JFrame {
             }
         });
 
+        idCuenta.setEditable(false);
+
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setText("Identificación");
+        jLabel2.setText("Cuenta");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Clave antigua");
@@ -97,7 +102,7 @@ public class cambioDeClave extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(idValue)
+                                    .addComponent(idCuenta)
                                     .addComponent(oldPassword)
                                     .addComponent(newPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -122,7 +127,7 @@ public class cambioDeClave extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,19 +153,17 @@ public class cambioDeClave extends javax.swing.JFrame {
 
     private void updateDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateDataActionPerformed
         // TODO add your handling code here:
-        conexion con = new conexion();
-        String numDoc = idValue.getText();
+        String numDoc = idCuenta.getText();
         Integer oldPasswordData = Integer.parseInt(oldPassword.getText());
         Integer newPasswordData = Integer.parseInt(newPassword.getText());
-        con.conexion();
-        String SQL = "SELECT numDoc, contraseña FROM usuarios WHERE numDoc='"+numDoc+"' AND contraseña='"+oldPasswordData+"'";
         try {
-            con.resultado = con.sentencia.executeQuery(SQL);            
-            if(con.resultado.next()){
+                Statement st = cn.createStatement();
+                ResultSet rs = st.executeQuery("SELECT numCuenta, contra FROM cuenta WHERE numCuenta='"+cuentaUsu+"' AND contra='"+oldPasswordData+"'");                        
+            if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Usuario existente, trámite en proceso....\nEspere por favor...");
-                PreparedStatement pst = cn.prepareStatement("UPDATE usuarios SET contraseña='"+newPasswordData+"' WHERE numDoc='"+numDoc+"'");
+                PreparedStatement pst = cn.prepareStatement("UPDATE cuenta SET contra='"+newPasswordData+"' WHERE numCuenta='"+cuentaUsu+"'");
                 pst.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Datos de el usuario "+numDoc+" actualizados correctamente.");
+                JOptionPane.showMessageDialog(null, "Datos de la cuenta #"+numDoc+" actualizados correctamente.");
                 limpiar();
                 interfazCajero redireccion = new interfazCajero();
                 redireccion.setVisible(true);
@@ -215,7 +218,7 @@ public class cambioDeClave extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelUpdate;
-    private javax.swing.JTextField idValue;
+    private javax.swing.JTextField idCuenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -10,6 +10,7 @@ package cajero;
  * @author estiv
  */
 public class interfazCajero extends javax.swing.JFrame {
+    
     public static String nombre1;
 
     /**
@@ -167,7 +168,7 @@ public class interfazCajero extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        transacciones transaccion = new transacciones();
+        RetiroOConsignacion transaccion = new RetiroOConsignacion();
         transaccion.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
