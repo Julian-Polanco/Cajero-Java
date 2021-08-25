@@ -17,7 +17,8 @@ public class transacciones extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
-        
+    
+
     void limpiar(){
         idDocumento.setText("");
         valorATratar.setText("");
@@ -206,66 +207,99 @@ public class transacciones extends javax.swing.JFrame {
     }//GEN-LAST:event_limpiarActionPerformed
 
     private void generarTransaccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarTransaccionActionPerformed
-        conexion con = new conexion();
         String numDoc = idDocumento.getText();
         String operacionARealizar = (String) proceso.getSelectedItem();
         Integer numCuenta = Integer.parseInt(idCuenta.getText());
         Integer dineroEnCuestion = Integer.parseInt(valorATratar.getText());
         Integer Porcentaje = dineroEnCuestion / 10;
         String tipo = (String) proceso.getSelectedItem();
-        con.conexion();
         String SQL = "SELECT numDoc FROM usuarios WHERE numDoc='"+numDoc+"'";
         String SQL2 = "SELECT numCuenta FROM cuenta WHERE numCuenta='"+numCuenta+"'";
         String SQL3 = "INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES (?,?,?,?,?)";
         String SQL4 = "UPDATE cuenta SET saldo = ? WHERE numCuenta = ?";
-        String SQL5 = "SELECT saldo FROM cuenta WHERE numCuenta= ?";
+        String SQL5 = "SELECT * FROM cuenta WHERE numCuenta= '"+numCuenta+"' && numDoc= '"+numDoc+"'";
+        String saldo = "";
+        int parcial = 0, parcialAEntrar = 0;
+        conexion cc = new conexion();
+        Connection con = cc.conexion();
         try {
-            con.resultado = con.sentencia.executeQuery(SQL);            
-            if(con.resultado.next()){
+            Statement busqueda1 = con.createStatement();
+            ResultSet b1 = busqueda1.executeQuery(SQL);
+            if(b1.next()){
+                Statement busqueda2 = con.createStatement();
+                ResultSet b2 = busqueda2.executeQuery(SQL2);
                 JOptionPane.showMessageDialog(null, "Usuario existente, trámite en proceso....\nEspere por favor...");
-                con.resultado = con.sentencia.executeQuery(SQL2);
-                if(con.resultado.next()){
+                if(b2.next()){
                     JOptionPane.showMessageDialog(null, "Cuenta existente, trámite en proceso....\nEspere por favor...");
-                    if(operacionARealizar == "Consignación"){
-                        PreparedStatement cargar = cn.prepareStatement(SQL3);
-                        cargar.setString(1, numDoc);
-                        cargar.setString(2, tipo);
-                        cargar.setInt(3, numCuenta);
-                        cargar.setInt(4, dineroEnCuestion);
-                        cargar.setInt(5, dineroEnCuestion/10);
-                        cargar.executeUpdate();
-                        
-                        
-                        PreparedStatement cbusqueda = cn.prepareStatement(SQL5);
-                        cbusqueda.setInt(1, numCuenta);
-                        ResultSet dato = cbusqueda.executeQuery();
-                        int datoEncontrado = 0;
-                        if(dato.next()){
-                            datoEncontrado = dato.getInt("saldo");
+                     if(operacionARealizar == "Consignación"){
+                         PreparedStatement busqueda3 = con.prepareStatement(SQL3);
+                         busqueda3.setString(1, numDoc);
+                         busqueda3.setString(2, tipo);
+                         busqueda3.setInt(3, numCuenta);
+                         busqueda3.setInt(4, dineroEnCuestion);
+                         busqueda3.setInt(5, dineroEnCuestion / 10);
+                         busqueda3.executeUpdate();
+                         Statement ejecucion1 = con.createStatement();
+                         ResultSet ejecicion1_1 = ejecucion1.executeQuery(SQL5);
+                         while(ejecicion1_1.next()){
+                             saldo = ejecicion1_1.getString(4);
+                             parcial = Integer.parseInt(saldo);
+                             parcialAEntrar = parcial + (dineroEnCuestion - Porcentaje);
+                             try{
+                                PreparedStatement actualizacion = con.prepareStatement(SQL4);
+                                actualizacion.setInt(1, parcialAEntrar);
+                                actualizacion.setInt(2, numCuenta);
+                                actualizacion.executeUpdate();
+                                JOptionPane.showMessageDialog(null, "Saldo de la cuenta #"+numCuenta+" actualizado.");
+                             }catch(Exception e){
+                                 System.out.println(e.getMessage());
+                             }
+                        JOptionPane.showMessageDialog(null, "Transacción realizada.");
+                        limpiar();
+                        interfazCajero redireccion = new interfazCajero();
+                        redireccion.setVisible(true);
+                        this.setVisible(false);
                         }
-                        //int datoEncontrado2 = Integer.parseInt(datoEncontrado);
-                        PreparedStatement car = cn.prepareStatement(SQL4);
-                        car.setInt(1, datoEncontrado + (dineroEnCuestion-Porcentaje));
-                        cargar.setInt(2, numCuenta);
-                        cargar.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Transacción del usuario "+numDoc+" realizada correctamente.");
                     }else if(operacionARealizar == "Retiro"){
-                        PreparedStatement pst2 = cn.prepareStatement("INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES ("+numDoc+","+tipo+", "+numCuenta+", "+-dineroEnCuestion+", "+Porcentaje+")");
-                        pst2.executeUpdate();
-                        JOptionPane.showMessageDialog(null, "Transacción del usuario "+numDoc+" realizada correctamente.");
+                        Statement busqueda5 = con.createStatement();
+                        ResultSet busqueda5ejecucion = busqueda5.executeQuery(SQL5);
+                        while(busqueda5ejecucion.next()){
+                            saldo = busqueda5ejecucion.getString(4);
+                            parcial = Integer.parseInt(saldo);
+                            if(parcial<dineroEnCuestion){
+                                JOptionPane.showMessageDialog(null, "...ERROR FONDOS INSUFICIENTES...");
+                            }else{
+                                parcialAEntrar = parcial - dineroEnCuestion;
+                                PreparedStatement actualizacion = con.prepareStatement(SQL4);
+                                actualizacion.setInt(1, parcialAEntrar);
+                                actualizacion.setInt(2, numCuenta);
+                                actualizacion.executeUpdate();
+                                try{
+                                    PreparedStatement busqueda3 = con.prepareStatement(SQL3);
+                                    busqueda3.setString(1, numDoc);
+                                    busqueda3.setString(2, tipo);
+                                    busqueda3.setInt(3, numCuenta);
+                                    busqueda3.setInt(4, -dineroEnCuestion);
+                                    busqueda3.setInt(5, 0);
+                                    busqueda3.executeUpdate();
+                                }catch(Exception e){
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "Transacción realizada.");
+                        limpiar();
+                        interfazCajero redireccion = new interfazCajero();
+                        redireccion.setVisible(true);
+                        this.setVisible(false);
                     }
-                    limpiar();
-                    interfazCajero redireccion = new interfazCajero();
-                    redireccion.setVisible(true);
-                    this.setVisible(false);
                 }else{
-                    JOptionPane.showMessageDialog(null, "Cuenta inválida o inexistente. \n Revise por favor");
+                    JOptionPane.showMessageDialog(null, "Cuenta inválida o inexistente, inténtelo de nuevo.");
                 }
             }else{
-                JOptionPane.showMessageDialog(null, "Usuario/Contraseña inválido o inexistente. \n Revise por favor");
+                JOptionPane.showMessageDialog(null, "Usuario inválido o inexistente, inténtelo de nuevo.");
             }
-        } catch (SQLException ex) {
-            //Logger.getLogger(cambioDeClave.class.getName()).log(Level.SEVERE, null, ex);
+        } catch(SQLException ex){
             System.out.println(ex.getMessage());
         }   
     }//GEN-LAST:event_generarTransaccionActionPerformed
@@ -321,6 +355,5 @@ public class transacciones extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> proceso;
     private javax.swing.JTextField valorATratar;
     // End of variables declaration//GEN-END:variables
-    conexion cc= new conexion();
-    Connection cn = cc.conexion();
+    
 }
