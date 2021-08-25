@@ -341,6 +341,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(0,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);
@@ -359,6 +360,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(1,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);
@@ -370,6 +372,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(fila,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         interfazInicio.nombre = nombre2;
         clave.setVisible(true);
@@ -381,6 +384,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(2,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);
@@ -391,6 +395,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(3,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);
@@ -401,6 +406,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
        String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(4,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);
@@ -411,6 +417,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(5,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);
@@ -421,6 +428,7 @@ public class interfazCuentasUsuario extends javax.swing.JFrame {
         String cuentaSel;
         cuentaSel = tbCuentas.getValueAt(6,2).toString();
         interfazInicio.cuenta=cuentaSel;
+        cambioDeClave.cuentaUsu=cuentaSel;
         interfazInicio clave = new interfazInicio();
         clave.setVisible(true);
         this.setVisible(false);

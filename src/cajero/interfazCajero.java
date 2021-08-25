@@ -10,6 +10,7 @@ package cajero;
  * @author estiv
  */
 public class interfazCajero extends javax.swing.JFrame {
+    
     public static String nombre1;
 
     /**
