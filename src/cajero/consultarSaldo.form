@@ -58,12 +58,16 @@
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
-                              <Component id="btn_consultar_saldo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" min="-2" pref="284" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="regresar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_consultar_saldo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -92,12 +96,21 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="num_cuenta" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="uno" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="tres" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="dos" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
-                  <Component id="btn_consultar_saldo" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="uno" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="tres" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="dos" alignment="3" min="-2" pref="53" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btn_consultar_saldo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="regresar" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -118,7 +131,7 @@
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="186" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="434" max="32767" attributes="0"/>
+              <EmptySpace pref="433" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -285,5 +298,16 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="regresar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Times New Roman" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Regresar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="regresarActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>
