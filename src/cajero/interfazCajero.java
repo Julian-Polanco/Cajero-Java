@@ -174,6 +174,9 @@ public class interfazCajero extends javax.swing.JFrame {
 
     private void consultarMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarMovimientosActionPerformed
         // TODO add your handling code here:
+        consultarMovimientos consusaldo= new consultarMovimientos();
+        consusaldo.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_consultarMovimientosActionPerformed
 
     /**
