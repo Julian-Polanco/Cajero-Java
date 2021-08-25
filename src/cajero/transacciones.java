@@ -218,7 +218,7 @@ public class transacciones extends javax.swing.JFrame {
         String SQL3 = "INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES (?,?,?,?,?)";
         String SQL4 = "UPDATE cuenta SET saldo = ? WHERE numCuenta = ?";
         String SQL5 = "SELECT * FROM cuenta WHERE numCuenta= '"+numCuenta+"' && numDoc= '"+numDoc+"'";
-        String SLQ6 = "SELECT * FROM transacciones ORDER BY idTrans DESC LIMIT 1";
+        String SLQ6 = "SELECT * FROM transacciones  WHERE numCuenta= '"+numCuenta+"' && numDoc= '"+numDoc+"' && idTrans  ORDER BY idTrans DESC LIMIT 1";
         String saldo = "", a = "", b = "", c = "", d = "", e2 = "", f = "", g="";
         int parcial = 0, parcialAEntrar = 0;
         conexion cc = new conexion();
