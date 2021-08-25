@@ -24,15 +24,41 @@ String num1;
 String num2;
 String num3;
 String num4;
+public static String cuenta1;
 
     /**
      * Creates new form consultarSaldo
      */
     public consultarSaldo() {
         initComponents();
+        numCuenta.setText(cuenta1);
+        consulta();
     this.setLocationRelativeTo(null);    
-   
-
+}
+    
+    void consulta(){
+     DefaultTableModel modelo= new DefaultTableModel();// se creó una instancia de una tabla
+    modelo.addColumn("CUENTA");
+    modelo.addColumn("DOCUMENTO");
+    modelo.addColumn("SALDO");
+    tb_saldo.setModel(modelo);
+    String[]datos = new String[3];
+    try{
+        int dato=0;
+       dato= Integer.parseInt(numCuenta.getText());
+    Statement st= cn.createStatement();
+    ResultSet rs= st.executeQuery("SELECT * FROM cuenta WHERE numCuenta='"+dato+"' ");
+       while (rs.next()){
+    datos[0]=rs.getString(2);
+    datos[1]=rs.getString(1);
+    datos[2]=rs.getString(4);
+    modelo.addRow(datos);
+}
+    }catch(Exception e){
+    System.out.print(e.getMessage());
+    JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);     
+    }
+       
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,7 +71,7 @@ String num4;
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        num_cuenta = new javax.swing.JTextField();
+        numCuenta = new javax.swing.JTextField();
         uno = new javax.swing.JButton();
         dos = new javax.swing.JButton();
         tres = new javax.swing.JButton();
@@ -69,9 +95,9 @@ String num4;
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Si desea conocer su saldo por favor digite su número de cuenta");
 
-        num_cuenta.addActionListener(new java.awt.event.ActionListener() {
+        numCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                num_cuentaActionPerformed(evt);
+                numCuentaActionPerformed(evt);
             }
         });
 
@@ -248,7 +274,7 @@ String num4;
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
-                        .addComponent(num_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(numCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -258,7 +284,7 @@ String num4;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(num_cuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(numCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
@@ -294,14 +320,14 @@ String num4;
 
     private void dosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"2");
+        numCuenta.setText(numCuenta.getText()+"2");
     }//GEN-LAST:event_dosActionPerformed
 
-    private void num_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num_cuentaActionPerformed
+    private void numCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numCuentaActionPerformed
         // TODO add your handling code here:
         //int numUno=1;
         
-    }//GEN-LAST:event_num_cuentaActionPerformed
+    }//GEN-LAST:event_numCuentaActionPerformed
 
     private void unoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unoMouseClicked
         // TODO add your handling code here:
@@ -310,7 +336,7 @@ String num4;
 
     private void unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoActionPerformed
         // TODO add your handling code here:
-       num_cuenta.setText(num_cuenta.getText()+"1");
+       numCuenta.setText(numCuenta.getText()+"1");
     }//GEN-LAST:event_unoActionPerformed
 
     private void dosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dosMouseClicked
@@ -330,71 +356,47 @@ String num4;
 
     private void tresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"3");
+        numCuenta.setText(numCuenta.getText()+"3");
         
     }//GEN-LAST:event_tresActionPerformed
 
     private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"4");
+        numCuenta.setText(numCuenta.getText()+"4");
     }//GEN-LAST:event_cuatroActionPerformed
 
     private void cincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"5");
+        numCuenta.setText(numCuenta.getText()+"5");
     }//GEN-LAST:event_cincoActionPerformed
 
     private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"6");
+        numCuenta.setText(numCuenta.getText()+"6");
     }//GEN-LAST:event_seisActionPerformed
 
     private void sieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"7");
+        numCuenta.setText(numCuenta.getText()+"7");
     }//GEN-LAST:event_sieteActionPerformed
 
     private void ochoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"8");
+        numCuenta.setText(numCuenta.getText()+"8");
     }//GEN-LAST:event_ochoActionPerformed
 
     private void nueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nueveActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"9");
+        numCuenta.setText(numCuenta.getText()+"9");
     }//GEN-LAST:event_nueveActionPerformed
 
     private void ceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroActionPerformed
         // TODO add your handling code here:
-        num_cuenta.setText(num_cuenta.getText()+"0");
+        numCuenta.setText(numCuenta.getText()+"0");
     }//GEN-LAST:event_ceroActionPerformed
 
     private void btn_consultar_saldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultar_saldoActionPerformed
- DefaultTableModel modelo= new DefaultTableModel();// se creó una instancia de una tabla
-    modelo.addColumn("CUENTA");
-    modelo.addColumn("DOCUMENTO");
-    modelo.addColumn("SALDO");
-    tb_saldo.setModel(modelo);
-    String[]datos = new String[3];
-    try{
-        int dato=0;
-       dato= Integer.parseInt(num_cuenta.getText());
-    Statement st= cn.createStatement();
-    ResultSet rs= st.executeQuery("SELECT * FROM cuenta WHERE numCuenta='"+dato+"' ");
-       while (rs.next()){
-    datos[0]=rs.getString(2);
-    datos[1]=rs.getString(1);
-    datos[2]=rs.getString(4);
-    modelo.addRow(datos);
-}
-    }catch(Exception e){
-    System.out.print(e.getMessage());
-    JOptionPane.showMessageDialog(null, "No se pudo Almacenar" +e);     
-    }
-       
-   
-       
-    
+   consulta();           
     }//GEN-LAST:event_btn_consultar_saldoActionPerformed
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
@@ -449,7 +451,7 @@ String num4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton nueve;
-    private javax.swing.JTextField num_cuenta;
+    private javax.swing.JTextField numCuenta;
     private javax.swing.JButton ocho;
     private javax.swing.JButton regresar;
     private javax.swing.JButton seis;

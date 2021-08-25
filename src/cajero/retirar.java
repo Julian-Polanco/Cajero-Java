@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package cajero;
 
 import java.awt.Color;
@@ -6,18 +11,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import javax.swing.border.EmptyBorder;
 
-/* @author Grupo Media libra de agua */
-public class InterfazDocumento extends javax.swing.JFrame {
+/**
+ *
+ * @author Julian Polanco
+ */
+public class retirar extends javax.swing.JFrame {
 
-    public InterfazDocumento() {
+    public static String numCuenta;
+    public static String numDoc;
+    /**
+     * Creates new form retirar
+     */
+    public retirar() {
         initComponents();
         setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(254, 244, 232));
-        TextPrompt id = new TextPrompt("Escriba su numero de identificacion sin puntos ni comas", txtId);
     }
-
+void limpiar(){
+        valor.setText("");
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,10 +43,12 @@ public class InterfazDocumento extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        botonCero = new javax.swing.JButton();
+        botonCancelar = new javax.swing.JButton();
         botonUno = new javax.swing.JButton();
+        botonCorregir = new javax.swing.JButton();
         botonDos = new javax.swing.JButton();
+        botonContinuar = new javax.swing.JButton();
         botonTres = new javax.swing.JButton();
         botonCuatro = new javax.swing.JButton();
         botonCinco = new javax.swing.JButton();
@@ -40,32 +56,30 @@ public class InterfazDocumento extends javax.swing.JFrame {
         botonSiete = new javax.swing.JButton();
         botonOcho = new javax.swing.JButton();
         botonNueve = new javax.swing.JButton();
-        botonCero = new javax.swing.JButton();
-        botonCancelar = new javax.swing.JButton();
-        botonCorregir = new javax.swing.JButton();
-        botonContinuar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        irARegistro = new javax.swing.JButton();
+        valor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 28)); // NOI18N
-        jLabel1.setText("Bienvenido al Banco Media Libra de Agua");
-        jLabel1.setToolTipText("");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Primero digite su numero de identificacion");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel2.setText("Por favor Escriba el valor a retirar");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
-
-        txtId.setBackground(new java.awt.Color(254, 244, 232));
-        txtId.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        txtId.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
-        txtId.addActionListener(new java.awt.event.ActionListener() {
+        botonCero.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        botonCero.setText("0");
+        botonCero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
+                botonCeroActionPerformed(evt);
+            }
+        });
+
+        botonCancelar.setBackground(new java.awt.Color(255, 0, 0));
+        botonCancelar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        botonCancelar.setText("Cancelar");
+        botonCancelar.setPreferredSize(new java.awt.Dimension(207, 51));
+        botonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCancelarActionPerformed(evt);
             }
         });
 
@@ -77,11 +91,31 @@ public class InterfazDocumento extends javax.swing.JFrame {
             }
         });
 
+        botonCorregir.setBackground(new java.awt.Color(255, 255, 51));
+        botonCorregir.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        botonCorregir.setText("Corregir");
+        botonCorregir.setPreferredSize(new java.awt.Dimension(207, 51));
+        botonCorregir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCorregirActionPerformed(evt);
+            }
+        });
+
         botonDos.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         botonDos.setText("2");
         botonDos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDosActionPerformed(evt);
+            }
+        });
+
+        botonContinuar.setBackground(new java.awt.Color(51, 255, 51));
+        botonContinuar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        botonContinuar.setText("Continuar");
+        botonContinuar.setPreferredSize(new java.awt.Dimension(207, 51));
+        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonContinuarActionPerformed(evt);
             }
         });
 
@@ -141,53 +175,12 @@ public class InterfazDocumento extends javax.swing.JFrame {
             }
         });
 
-        botonCero.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        botonCero.setText("0");
-        botonCero.addActionListener(new java.awt.event.ActionListener() {
+        valor.setBackground(new java.awt.Color(254, 244, 232));
+        valor.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        valor.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        valor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCeroActionPerformed(evt);
-            }
-        });
-
-        botonCancelar.setBackground(new java.awt.Color(255, 0, 0));
-        botonCancelar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        botonCancelar.setText("Cancelar");
-        botonCancelar.setPreferredSize(new java.awt.Dimension(207, 51));
-
-        botonCorregir.setBackground(new java.awt.Color(255, 255, 51));
-        botonCorregir.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        botonCorregir.setText("Corregir");
-        botonCorregir.setPreferredSize(new java.awt.Dimension(207, 51));
-        botonCorregir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCorregirActionPerformed(evt);
-            }
-        });
-
-        botonContinuar.setBackground(new java.awt.Color(51, 255, 51));
-        botonContinuar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        botonContinuar.setText("Continuar");
-        botonContinuar.setPreferredSize(new java.awt.Dimension(207, 51));
-        botonContinuar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonContinuarActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel3.setText("Al finalizar presione continuar");
-
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 255, 51));
-        jLabel4.setText("■");
-
-        irARegistro.setBackground(new java.awt.Color(0, 0, 0));
-        irARegistro.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        irARegistro.setForeground(new java.awt.Color(255, 255, 255));
-        irARegistro.setText("Registrarse");
-        irARegistro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                irARegistroActionPerformed(evt);
+                valorActionPerformed(evt);
             }
         });
 
@@ -196,9 +189,15 @@ public class InterfazDocumento extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonUno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -208,10 +207,6 @@ public class InterfazDocumento extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(botonCuatro)
                         .addGap(6, 6, 6)
                         .addComponent(botonCinco)
@@ -219,9 +214,6 @@ public class InterfazDocumento extends javax.swing.JFrame {
                         .addComponent(botonSeis)
                         .addGap(10, 10, 10)
                         .addComponent(botonCorregir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(botonSiete)
                         .addGap(6, 6, 6)
@@ -232,27 +224,19 @@ public class InterfazDocumento extends javax.swing.JFrame {
                                 .addComponent(botonNueve))
                             .addComponent(botonCero))
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(irARegistro)
-                            .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(105, 105, 105))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(15, 15, 15)
-                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addGap(10, 10, 10)
+                .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonUno)
                     .addComponent(botonDos)
@@ -271,124 +255,136 @@ public class InterfazDocumento extends javax.swing.JFrame {
                     .addComponent(botonNueve)
                     .addComponent(botonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCero)
-                    .addComponent(irARegistro))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(botonCero)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
+    private void botonCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCeroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
+        String texto = valor.getText();
+        valor.setText(texto + "0");
+    }//GEN-LAST:event_botonCeroActionPerformed
 
     private void botonUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUnoActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "1");
+        String texto = valor.getText();
+        valor.setText(texto + "1");
     }//GEN-LAST:event_botonUnoActionPerformed
+
+    private void botonCorregirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCorregirActionPerformed
+        // TODO add your handling code here:
+        valor.setText("");
+    }//GEN-LAST:event_botonCorregirActionPerformed
 
     private void botonDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDosActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "2");
+        String texto = valor.getText();
+        valor.setText(texto + "2");
     }//GEN-LAST:event_botonDosActionPerformed
+
+    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
+        // TODO add your handling code here:
+                    String SQL3 = "INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES (?,?,?,?,?)";
+                    String SQL4 = "UPDATE cuenta SET saldo = ? WHERE numCuenta = ?";
+                    String SQL5 = "SELECT * FROM cuenta WHERE numCuenta= '"+numCuenta+"' && numDoc= '"+numDoc+"'";
+                    String tipo = "Retiro";
+                    Integer dineroEnCuestion = Integer.parseInt(valor.getText());
+                    String saldo = "";
+                    System.out.println(numCuenta);
+                    System.out.println(numDoc);
+                    int parcial = 0, parcialAEntrar = 0;
+        try{
+                        Statement busqueda5 = con.createStatement();
+                        ResultSet busqueda5ejecucion = busqueda5.executeQuery(SQL5);
+                        while(busqueda5ejecucion.next()){
+                            saldo = busqueda5ejecucion.getString(4);
+                            parcial = Integer.parseInt(saldo);
+                            if(parcial<dineroEnCuestion){
+                                JOptionPane.showMessageDialog(null, "...ERROR FONDOS INSUFICIENTES...");
+                            }else{
+                                parcialAEntrar = parcial - dineroEnCuestion;
+                                PreparedStatement actualizacion = con.prepareStatement(SQL4);
+                                actualizacion.setInt(1, parcialAEntrar);
+                                actualizacion.setInt(2, Integer.parseInt(numCuenta));
+                                actualizacion.executeUpdate();
+                                try{
+                                    PreparedStatement busqueda3 = con.prepareStatement(SQL3);
+                                    busqueda3.setString(1, numDoc);
+                                    busqueda3.setString(2, tipo);
+                                    busqueda3.setInt(3, Integer.parseInt(numCuenta));
+                                    busqueda3.setInt(4, -dineroEnCuestion);
+                                    busqueda3.setInt(5, 0);
+                                    busqueda3.executeUpdate();
+                                }catch(Exception e){
+                                    System.out.println(e.getMessage());
+                                }
+                            }
+                        }
+                        JOptionPane.showMessageDialog(null, "Transacción realizada.");
+                        limpiar();
+                        interfazCajero redireccion = new interfazCajero();
+                        redireccion.setVisible(true);
+                        this.setVisible(false);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_botonContinuarActionPerformed
 
     private void botonTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTresActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "3");
+        String texto = valor.getText();
+        valor.setText(texto + "3");
     }//GEN-LAST:event_botonTresActionPerformed
 
     private void botonCuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCuatroActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "4");
+        String texto = valor.getText();
+        valor.setText(texto + "4");
     }//GEN-LAST:event_botonCuatroActionPerformed
 
     private void botonCincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCincoActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "5");
+        String texto = valor.getText();
+        valor.setText(texto + "5");
     }//GEN-LAST:event_botonCincoActionPerformed
 
     private void botonSeisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeisActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "6");
+        String texto = valor.getText();
+        valor.setText(texto + "6");
     }//GEN-LAST:event_botonSeisActionPerformed
 
     private void botonSieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSieteActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "7");
+        String texto = valor.getText();
+        valor.setText(texto + "7");
     }//GEN-LAST:event_botonSieteActionPerformed
 
     private void botonOchoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOchoActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "8");
+        String texto = valor.getText();
+        valor.setText(texto + "8");
     }//GEN-LAST:event_botonOchoActionPerformed
 
     private void botonNueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNueveActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "9");
+        String texto = valor.getText();
+        valor.setText(texto + "9");
     }//GEN-LAST:event_botonNueveActionPerformed
 
-    private void botonCeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCeroActionPerformed
+    private void valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorActionPerformed
         // TODO add your handling code here:
-        String texto = txtId.getText();
-        txtId.setText(texto + "0");
-    }//GEN-LAST:event_botonCeroActionPerformed
+    }//GEN-LAST:event_valorActionPerformed
 
-    private void botonCorregirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCorregirActionPerformed
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
-        txtId.setText("");
-    }//GEN-LAST:event_botonCorregirActionPerformed
-
-    private void irARegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irARegistroActionPerformed
-        // TODO add your handling code here:
-        registro r = new registro();
-        r.setVisible(true);
+        interfazCajero volver = new interfazCajero();
+        volver.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_irARegistroActionPerformed
-
-    private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
-        // TODO add your handling code here:
-        String documento = txtId.getText();
-        try {
-            String SQL = "SELECT * FROM usuarios WHERE numDoc = ?";
-            PreparedStatement pstmt = cn.prepareStatement(SQL);
-            pstmt.setString(1, documento);
-            ResultSet rs = pstmt.executeQuery();
-            while(rs.next()){
-                String nombreUSU;
-                nombreUSU = rs.getString(3);
-                interfazCuentasUsuario.nombre2 = nombreUSU;
-                interfazCajero.nombre1 = nombreUSU;
-            }
-            rs.last();
-            if (rs.getRow() > 0) {
-                String id = txtId.getText();
-                interfazInicio.dato=id;                
-                interfazCuentasUsuario.dato=id; 
-                retirar.numDoc=id;                
-                interfazCuentasUsuario f = new interfazCuentasUsuario();                
-                this.setVisible(false);
-                f.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "Documento no registrado");
-                txtId.setText("");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Documento no registrado");
-            txtId.setText("");
-        }
-
-    }//GEN-LAST:event_botonContinuarActionPerformed
+    }//GEN-LAST:event_botonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,20 +403,20 @@ public class InterfazDocumento extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazDocumento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(retirar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazDocumento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(retirar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazDocumento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(retirar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazDocumento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(retirar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfazDocumento().setVisible(true);
+                new retirar().setVisible(true);
             }
         });
     }
@@ -439,14 +435,10 @@ public class InterfazDocumento extends javax.swing.JFrame {
     private javax.swing.JButton botonSiete;
     private javax.swing.JButton botonTres;
     private javax.swing.JButton botonUno;
-    private javax.swing.JButton irARegistro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 conexion cc = new conexion();
-    Connection cn = cc.conexion();
+        Connection con = cc.conexion();
 }
