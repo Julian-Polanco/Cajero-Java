@@ -218,7 +218,8 @@ public class transacciones extends javax.swing.JFrame {
         String SQL3 = "INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES (?,?,?,?,?)";
         String SQL4 = "UPDATE cuenta SET saldo = ? WHERE numCuenta = ?";
         String SQL5 = "SELECT * FROM cuenta WHERE numCuenta= '"+numCuenta+"' && numDoc= '"+numDoc+"'";
-        String saldo = "";
+        String SLQ6 = "SELECT * FROM transacciones ORDER BY idTrans DESC LIMIT 1";
+        String saldo = "", a = "", b = "", c = "", d = "", e2 = "", f = "", g="";
         int parcial = 0, parcialAEntrar = 0;
         conexion cc = new conexion();
         Connection con = cc.conexion();
@@ -254,6 +255,25 @@ public class transacciones extends javax.swing.JFrame {
                              }catch(Exception e){
                                  System.out.println(e.getMessage());
                              }
+                        Statement recibo = con.createStatement();
+                        ResultSet reciboo = recibo.executeQuery(SLQ6);
+                         while(reciboo.next()){
+                             a = reciboo.getString(1);
+                             b = reciboo.getString(2);
+                             c = reciboo.getString(3);
+                             d = reciboo.getString(4);
+                             e2 = reciboo.getString(5);
+                             f = reciboo.getString(6);
+                             g = reciboo.getString(7);                             
+                         }
+                        
+                        JOptionPane.showMessageDialog(null, "Código de lla transacción: " +a+
+                                                            "\nNúmero del titular: " +b+
+                                                            "\nTipo de la transacción: " +c+
+                                                            "\nNúmero de la cuenta cuenta consignado: " +d+
+                                                            "\nCantidad de dinero consignado:" +e2+
+                                                            "\nFecha de la transacción: " +f+
+                                                            "\nValor transacción: "+g);
                         JOptionPane.showMessageDialog(null, "Transacción realizada.");
                         limpiar();
                         interfazCajero redireccion = new interfazCajero();
@@ -287,6 +307,26 @@ public class transacciones extends javax.swing.JFrame {
                                 }
                             }
                         }
+                        Statement recibo = con.createStatement();
+                        ResultSet reciboo = recibo.executeQuery(SLQ6);
+                         while(reciboo.next()){
+                             a = reciboo.getString(1);
+                             b = reciboo.getString(2);
+                             c = reciboo.getString(3);
+                             d = reciboo.getString(4);
+                             e2 = reciboo.getString(5);
+                             f = reciboo.getString(6);
+                             g = reciboo.getString(7);                             
+                         }
+                        
+                        JOptionPane.showMessageDialog(null, "Código de lla transacción: " +a+
+                                                            "\nNúmero del titular: " +b+
+                                                            "\nTipo de la transacción: " +c+
+                                                            "\nNúmero de la cuenta cuenta consignado: " +d+
+                                                            "\nCantidad de dinero consignado:" +e2+
+                                                            "\nFecha de la transacción: " +f+
+                                                            "\nValor transacción: "+g);
+                        
                         JOptionPane.showMessageDialog(null, "Transacción realizada.");
                         limpiar();
                         interfazCajero redireccion = new interfazCajero();
