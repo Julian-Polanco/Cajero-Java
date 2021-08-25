@@ -7,9 +7,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class consultarMovimientos extends javax.swing.JFrame {
+        public static String cuentaU;
+
     public consultarMovimientos() {
         initComponents();
         this.setLocationRelativeTo(null);//Centrar formulario
+        cuenta.setText(cuentaU);
         showData();
     }
     void showData(){
@@ -76,6 +79,7 @@ public class consultarMovimientos extends javax.swing.JFrame {
             }
         });
 
+        cuenta.setEditable(false);
         cuenta.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
