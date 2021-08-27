@@ -60,7 +60,7 @@ public class registro extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel3.setText("Tipo de documento:");
 
-        tipo_doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CC", "TI" }));
+        tipo_doc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CC", "TI", "CE", "PEP", "TD", "DNI" }));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel4.setText("Número de documento:");

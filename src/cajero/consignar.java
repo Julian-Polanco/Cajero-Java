@@ -32,30 +32,310 @@ public class consignar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        cuatro = new javax.swing.JButton();
+        cinco = new javax.swing.JButton();
+        seis = new javax.swing.JButton();
+        uno = new javax.swing.JButton();
+        dos = new javax.swing.JButton();
+        tres = new javax.swing.JButton();
+        siete = new javax.swing.JButton();
+        ocho = new javax.swing.JButton();
+        cero = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        limpiar = new javax.swing.JButton();
+        consignar = new javax.swing.JButton();
+        valor = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        nueve = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
+
+        cuatro.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        cuatro.setText("4");
+        cuatro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuatroActionPerformed(evt);
+            }
+        });
+
+        cinco.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        cinco.setText("5");
+        cinco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cincoActionPerformed(evt);
+            }
+        });
+
+        seis.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        seis.setText("6");
+        seis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seisActionPerformed(evt);
+            }
+        });
+
+        uno.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        uno.setText("1");
+        uno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unoActionPerformed(evt);
+            }
+        });
+
+        dos.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        dos.setText("2");
+        dos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dosActionPerformed(evt);
+            }
+        });
+
+        tres.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        tres.setText("3");
+        tres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tresActionPerformed(evt);
+            }
+        });
+
+        siete.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        siete.setText("7");
+        siete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sieteActionPerformed(evt);
+            }
+        });
+
+        ocho.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        ocho.setText("8");
+        ocho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ochoActionPerformed(evt);
+            }
+        });
+
+        cero.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        cero.setText("0");
+        cero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ceroActionPerformed(evt);
+            }
+        });
+
+        cancelar.setBackground(new java.awt.Color(255, 0, 0));
+        cancelar.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+
+        limpiar.setBackground(new java.awt.Color(255, 255, 51));
+        limpiar.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        limpiar.setText("Limpiar");
+        limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                limpiarActionPerformed(evt);
+            }
+        });
+
+        consignar.setBackground(new java.awt.Color(51, 255, 0));
+        consignar.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        consignar.setText("Confirmar");
+        consignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consignarActionPerformed(evt);
+            }
+        });
+
+        valor.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        jLabel2.setText("Digíte la cantidad a consignar");
+
+        nueve.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        nueve.setText("9");
+        nueve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nueveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(siete)
+                    .addComponent(cuatro)
+                    .addComponent(uno))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cero)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ocho)
+                            .addComponent(cinco)
+                            .addComponent(dos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(seis)
+                            .addComponent(tres)
+                            .addComponent(nueve))))
+                .addGap(98, 98, 98)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(consignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(61, 61, 61))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(184, 184, 184)
+                .addComponent(jLabel2)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(consignar)
+                        .addGap(18, 18, 18)
+                        .addComponent(limpiar)
+                        .addGap(18, 18, 18)
+                        .addComponent(cancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(uno)
+                                    .addComponent(dos))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cuatro)
+                                    .addComponent(cinco))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(siete)
+                                    .addComponent(ocho)
+                                    .addComponent(nueve)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tres)
+                                .addGap(18, 18, 18)
+                                .addComponent(seis)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cero)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limpiarActionPerformed
+        // TODO add your handling code here:
+        valor.setText("");
+    }//GEN-LAST:event_limpiarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        interfazCajero paso = new interfazCajero();
+        paso.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cancelarActionPerformed
+
+    private void unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "1");
+    }//GEN-LAST:event_unoActionPerformed
+
+    private void dosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "2");
+    }//GEN-LAST:event_dosActionPerformed
+
+    private void tresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "3");
+    }//GEN-LAST:event_tresActionPerformed
+
+    private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "4");
+    }//GEN-LAST:event_cuatroActionPerformed
+
+    private void cincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "5");
+    }//GEN-LAST:event_cincoActionPerformed
+
+    private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "6");
+    }//GEN-LAST:event_seisActionPerformed
+
+    private void sieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "7");
+    }//GEN-LAST:event_sieteActionPerformed
+
+    private void ochoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "8");
+    }//GEN-LAST:event_ochoActionPerformed
+
+    private void nueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nueveActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "9");
+    }//GEN-LAST:event_nueveActionPerformed
+
+    private void ceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "0");
+    }//GEN-LAST:event_ceroActionPerformed
+
+    private void valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valorActionPerformed
+
+    private void consignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consignarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consignarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,6 +373,21 @@ public class consignar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton cero;
+    private javax.swing.JButton cinco;
+    private javax.swing.JButton consignar;
+    private javax.swing.JButton cuatro;
+    private javax.swing.JButton dos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton limpiar;
+    private javax.swing.JButton nueve;
+    private javax.swing.JButton ocho;
+    private javax.swing.JButton seis;
+    private javax.swing.JButton siete;
+    private javax.swing.JButton tres;
+    private javax.swing.JButton uno;
+    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }
