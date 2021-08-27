@@ -81,6 +81,11 @@ public class consultarMovimientos extends javax.swing.JFrame {
 
         cuenta.setEditable(false);
         cuenta.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        cuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuentaActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel3.setText("Número de cuenta");
@@ -165,6 +170,10 @@ public class consultarMovimientos extends javax.swing.JFrame {
         volver.setVisible(true);
         this.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_regresarActionPerformed
+
+    private void cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cuentaActionPerformed
 
     /**
      * @param args the command line arguments
