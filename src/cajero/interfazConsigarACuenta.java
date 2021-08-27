@@ -140,7 +140,7 @@ public class interfazConsigarACuenta extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("Primero digite su numero de identificacion");
+        jLabel2.setText("Digite el numero de cuenta a quien desea realizar la consignacion");
 
         txtUsuarioAConsignar.setBackground(new java.awt.Color(254, 244, 232));
         txtUsuarioAConsignar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
