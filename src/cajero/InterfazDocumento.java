@@ -375,7 +375,8 @@ public class InterfazDocumento extends javax.swing.JFrame {
                 String id = txtId.getText();
                 interfazInicio.dato=id;                
                 interfazCuentasUsuario.dato=id; 
-                retirar.numDoc=id;                
+                retirar.numDoc=id;    
+                interfazConsigarACuenta.numDoc=id;
                 interfazCuentasUsuario f = new interfazCuentasUsuario();                
                 this.setVisible(false);
                 f.setVisible(true);

@@ -6,12 +6,21 @@
 package cajero;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Julian Polanco
  */
 public class interfazConsigarACuenta extends javax.swing.JFrame {
+public static String numDoc;
+public static String numCuenta;
+public static String dineroEnCuestion;
+
 
     /**
      * Creates new form interfazConsigarACuenta
@@ -20,6 +29,10 @@ public class interfazConsigarACuenta extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.getContentPane().setBackground(new Color(254, 244, 232));
+    }
+    
+    void limpiar(){
+        txtUsuarioAConsignar.setText("");
     }
 
     /**
@@ -268,6 +281,93 @@ public class interfazConsigarACuenta extends javax.swing.JFrame {
 
     private void botonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonContinuarActionPerformed
         // TODO add your handling code here:
+        String tipo = "Consignar";
+        String SQL3 = "INSERT INTO transacciones (numDoc, tipoTrans, numCuenta, cantidadDeDinero, valorTrans) VALUES (?,?,?,?,?)";
+        String SQL4 = "UPDATE cuenta SET saldo = ? WHERE numCuenta = ?";
+        String SQL5 = "SELECT * FROM cuenta WHERE numCuenta= '"+txtUsuarioAConsignar.getText()+"'";
+        String SQL7 = "SELECT * FROM cuenta WHERE numCuenta= '"+numCuenta+"'";                
+        String SLQ6 = "SELECT * FROM transacciones  WHERE numCuenta= '"+numCuenta+"' && numDoc= '"+numDoc+"' && idTrans  ORDER BY idTrans DESC LIMIT 1";
+        String saldo = "", a = "", b = "", c = "", d = "", e2 = "", f = "", g="";
+        String saldo1 ="";
+        int parcial = 0, parcialAEntrar = 0, parcial1=0, parcialAEntrar1=0;
+        Integer Porcentaje = Integer.parseInt(dineroEnCuestion) / 10;
+        try{
+                        PreparedStatement busqueda3 = con.prepareStatement(SQL3);
+                         busqueda3.setString(1, numDoc);
+                         busqueda3.setString(2, tipo);
+                         busqueda3.setInt(3, Integer.parseInt(txtUsuarioAConsignar.getText()));
+                         busqueda3.setInt(4, Integer.parseInt(dineroEnCuestion));
+                         busqueda3.setInt(5, Integer.parseInt(dineroEnCuestion) / 10);
+                         busqueda3.executeUpdate();
+                         Statement ejecucion1 = con.createStatement();
+                         ResultSet ejecicion1_1 = ejecucion1.executeQuery(SQL5);
+                         while(ejecicion1_1.next()){
+                             saldo = ejecicion1_1.getString(4);
+                             parcial = Integer.parseInt(saldo);
+                             parcialAEntrar = parcial + (Integer.parseInt(dineroEnCuestion));
+                             try{
+                                PreparedStatement actualizacion = con.prepareStatement(SQL4);
+                                actualizacion.setInt(1, parcialAEntrar);
+                                actualizacion.setInt(2, Integer.parseInt(txtUsuarioAConsignar.getText()));
+                                actualizacion.executeUpdate();
+                                JOptionPane.showMessageDialog(null, "Saldo de la cuenta #"+txtUsuarioAConsignar.getText()+" actualizado.");
+                                Statement ejecucion = con.createStatement();
+                                ResultSet ejecucion2 = ejecucion.executeQuery(SQL7);
+                                while(ejecucion2.next()){
+                                saldo1 = ejecucion2.getString(4);
+                                System.out.println(saldo1);
+                                
+                                parcial1 = Integer.parseInt(saldo1);
+                                
+                                System.out.println(parcial1);
+                                
+                                parcialAEntrar1 = parcial1 - Integer.parseInt(dineroEnCuestion) - Porcentaje;
+                                    System.out.println(parcialAEntrar1);
+                                try{
+                                PreparedStatement actualiza = con.prepareStatement(SQL4);
+                                actualiza.setInt(1, parcialAEntrar1);
+                                actualiza.setInt(2, Integer.parseInt(numCuenta));
+                                actualiza.executeUpdate();
+                                JOptionPane.showMessageDialog(null, "Saldo de la cuenta #"+numCuenta+" actualizado.");
+                                
+                                }catch (Exception e){
+                                    System.out.println(e.getMessage());
+                                }
+                                }
+                                
+                                }catch(Exception e){
+                                 System.out.println(e.getMessage());
+                             }
+                        Statement recibo = con.createStatement();
+                        ResultSet reciboo = recibo.executeQuery(SLQ6);
+                         while(reciboo.next()){
+                             a = reciboo.getString(1);
+                             b = reciboo.getString(2);
+                             c = reciboo.getString(3);
+                             d = reciboo.getString(4);
+                             e2 = reciboo.getString(5);
+                             f = reciboo.getString(6);
+                             g = reciboo.getString(7);                             
+                         }
+                        
+                        JOptionPane.showMessageDialog(null, "Código de lla transacción: " +a+
+                                                            "\nNúmero del titular: " +b+
+                                                            "\nTipo de la transacción: " +c+
+                                                            "\nNúmero de la cuenta cuenta consignado: " +txtUsuarioAConsignar.getText()+
+                                                            "\nCantidad de dinero consignado:" +e2+
+                                                            "\nFecha de la transacción: " +f+
+                                                            "\nValor transacción: "+g);
+                        JOptionPane.showMessageDialog(null, "Transacción realizada.");
+                        limpiar();
+                        interfazCajero redireccion = new interfazCajero();
+                        redireccion.setVisible(true);
+                        this.setVisible(false);
+                        }
+                         
+    }catch (Exception e){
+            System.out.println("error: "+e.getMessage());
+    }
+        
     }//GEN-LAST:event_botonContinuarActionPerformed
 
     private void botonTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTresActionPerformed
@@ -388,4 +488,6 @@ public class interfazConsigarACuenta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtUsuarioAConsignar;
     // End of variables declaration//GEN-END:variables
+conexion cc = new conexion();
+        Connection con = cc.conexion();
 }

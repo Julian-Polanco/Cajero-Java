@@ -335,6 +335,11 @@ public class consignar extends javax.swing.JFrame {
 
     private void consignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consignarActionPerformed
         // TODO add your handling code here:
+        String vr = valor.getText();
+        interfazConsigarACuenta.dineroEnCuestion=vr;
+        this.setVisible(false);
+        interfazConsigarACuenta ir = new interfazConsigarACuenta();
+        ir.setVisible(true);
     }//GEN-LAST:event_consignarActionPerformed
 
     /**
