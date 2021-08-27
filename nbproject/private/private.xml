@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/jdsa1/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/InterfazDocumento.java</file>
             <file>file:/C:/Users/jdsa1/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/registro.java</file>
             <file>file:/C:/Users/jdsa1/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/conexion.java</file>
@@ -18,6 +19,13 @@
             <file>file:/C:/Users/jdsa1/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/consultarMovimientos.java</file>
             <file>file:/C:/Users/jdsa1/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/consultarSaldo.java</file>
             <file>file:/C:/Users/jdsa1/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/interfazInicio.java</file>
+=======
+            <file>file:/C:/Users/Julian%20Polanco/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/consignar.java</file>
+            <file>file:/C:/Users/Julian%20Polanco/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/retirar.java</file>
+            <file>file:/C:/Users/Julian%20Polanco/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/InterfazDocumento.java</file>
+            <file>file:/C:/Users/Julian%20Polanco/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/transacciones.java</file>
+            <file>file:/C:/Users/Julian%20Polanco/OneDrive/Documentos/NetBeansProjects/Cajero-Java/src/cajero/interfazCuentasUsuario.java</file>
+>>>>>>> 25f5f4fd56431dfd066a30166bfe6e647e2f9750
         </group>
     </open-files>
 </project-private>
