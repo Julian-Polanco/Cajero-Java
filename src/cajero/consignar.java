@@ -32,52 +32,97 @@ public class consignar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        cuatro = new javax.swing.JButton();
+        cinco = new javax.swing.JButton();
+        seis = new javax.swing.JButton();
+        uno = new javax.swing.JButton();
+        dos = new javax.swing.JButton();
+        tres = new javax.swing.JButton();
+        siete = new javax.swing.JButton();
+        ocho = new javax.swing.JButton();
+        cero = new javax.swing.JButton();
         cancelar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
         consignar = new javax.swing.JButton();
         valor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton13 = new javax.swing.JButton();
+        nueve = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cajero/twitter_header_photo_1.png"))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton1.setText("4");
+        cuatro.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        cuatro.setText("4");
+        cuatro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuatroActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton2.setText("5");
+        cinco.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        cinco.setText("5");
+        cinco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cincoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton3.setText("6");
+        seis.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        seis.setText("6");
+        seis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seisActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton4.setText("1");
+        uno.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        uno.setText("1");
+        uno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unoActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton5.setText("2");
+        dos.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        dos.setText("2");
+        dos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dosActionPerformed(evt);
+            }
+        });
 
-        jButton6.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton6.setText("3");
+        tres.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        tres.setText("3");
+        tres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tresActionPerformed(evt);
+            }
+        });
 
-        jButton7.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton7.setText("7");
+        siete.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        siete.setText("7");
+        siete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sieteActionPerformed(evt);
+            }
+        });
 
-        jButton8.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton8.setText("8");
+        ocho.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        ocho.setText("8");
+        ocho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ochoActionPerformed(evt);
+            }
+        });
 
-        jButton9.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton9.setText("0");
+        cero.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        cero.setText("0");
+        cero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ceroActionPerformed(evt);
+            }
+        });
 
         cancelar.setBackground(new java.awt.Color(255, 0, 0));
         cancelar.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
@@ -100,14 +145,29 @@ public class consignar extends javax.swing.JFrame {
         consignar.setBackground(new java.awt.Color(51, 255, 0));
         consignar.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         consignar.setText("Confirmar");
+        consignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consignarActionPerformed(evt);
+            }
+        });
 
         valor.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
+        valor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                valorActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel2.setText("Digíte la cantidad a consignar");
 
-        jButton13.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
-        jButton13.setText("9");
+        nueve.setFont(new java.awt.Font("Times New Roman", 1, 30)); // NOI18N
+        nueve.setText("9");
+        nueve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nueveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -116,22 +176,22 @@ public class consignar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
+                    .addComponent(siete)
+                    .addComponent(cuatro)
+                    .addComponent(uno))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9)
+                    .addComponent(cero)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton8)
-                            .addComponent(jButton2)
-                            .addComponent(jButton5))
+                            .addComponent(ocho)
+                            .addComponent(cinco)
+                            .addComponent(dos))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton6)
-                            .addComponent(jButton13))))
+                            .addComponent(seis)
+                            .addComponent(tres)
+                            .addComponent(nueve))))
                 .addGap(98, 98, 98)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(consignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -174,23 +234,23 @@ public class consignar extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton4)
-                                    .addComponent(jButton5))
+                                    .addComponent(uno)
+                                    .addComponent(dos))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1)
-                                    .addComponent(jButton2))
+                                    .addComponent(cuatro)
+                                    .addComponent(cinco))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton7)
-                                    .addComponent(jButton8)
-                                    .addComponent(jButton13)))
+                                    .addComponent(siete)
+                                    .addComponent(ocho)
+                                    .addComponent(nueve)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton6)
+                                .addComponent(tres)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)))
+                                .addComponent(seis)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton9)))
+                        .addComponent(cero)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -208,6 +268,74 @@ public class consignar extends javax.swing.JFrame {
         paso.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void unoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unoActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "1");
+    }//GEN-LAST:event_unoActionPerformed
+
+    private void dosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "2");
+    }//GEN-LAST:event_dosActionPerformed
+
+    private void tresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "3");
+    }//GEN-LAST:event_tresActionPerformed
+
+    private void cuatroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "4");
+    }//GEN-LAST:event_cuatroActionPerformed
+
+    private void cincoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cincoActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "5");
+    }//GEN-LAST:event_cincoActionPerformed
+
+    private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "6");
+    }//GEN-LAST:event_seisActionPerformed
+
+    private void sieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sieteActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "7");
+    }//GEN-LAST:event_sieteActionPerformed
+
+    private void ochoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "8");
+    }//GEN-LAST:event_ochoActionPerformed
+
+    private void nueveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nueveActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "9");
+    }//GEN-LAST:event_nueveActionPerformed
+
+    private void ceroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ceroActionPerformed
+        // TODO add your handling code here:
+        String texto = valor.getText();
+        valor.setText(texto + "0");
+    }//GEN-LAST:event_ceroActionPerformed
+
+    private void valorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valorActionPerformed
+
+    private void consignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consignarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consignarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,20 +374,20 @@ public class consignar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelar;
+    private javax.swing.JButton cero;
+    private javax.swing.JButton cinco;
     private javax.swing.JButton consignar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton cuatro;
+    private javax.swing.JButton dos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton limpiar;
+    private javax.swing.JButton nueve;
+    private javax.swing.JButton ocho;
+    private javax.swing.JButton seis;
+    private javax.swing.JButton siete;
+    private javax.swing.JButton tres;
+    private javax.swing.JButton uno;
     private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }
