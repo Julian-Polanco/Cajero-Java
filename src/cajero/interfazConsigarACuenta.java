@@ -5,6 +5,8 @@
  */
 package cajero;
 
+import java.awt.Color;
+
 /**
  *
  * @author Julian Polanco
@@ -16,6 +18,8 @@ public class interfazConsigarACuenta extends javax.swing.JFrame {
      */
     public interfazConsigarACuenta() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.getContentPane().setBackground(new Color(254, 244, 232));
     }
 
     /**
